@@ -1,12 +1,22 @@
+using System;
+
 /// <summary>
 /// 房间类型
 /// </summary>
+[Flags]
 public enum RoomType
 {
-    MinorEnemy,
-    EliteEnemy,
-    Shop,
-    Treasure,
-    RestRoom,
-    Boss
+    MinorEnemy = 1,
+    EliteEnemy = 2,
+    Shop = 4,
+    Treasure = 8,
+    RestRoom = 16,
+    Boss = 32
+}
+
+public enum RoomState
+{
+    Locked,
+    Visited,
+    Attainable
 }
