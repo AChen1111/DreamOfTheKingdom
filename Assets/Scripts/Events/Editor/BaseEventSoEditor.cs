@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+
 
 [CustomEditor(typeof(BaseEventSO<>))]
 public class BaseEventSoEditor<T> : Editor

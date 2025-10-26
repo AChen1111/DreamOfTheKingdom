@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class FinishRoom : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public ObjectEventSO loadRoomEvent;
+    
+    private void OnMouseDown()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        loadRoomEvent.RaiseEvent(null, this);
     }
 }

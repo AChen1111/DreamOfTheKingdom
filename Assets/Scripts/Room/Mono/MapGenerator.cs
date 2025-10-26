@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
@@ -8,6 +9,9 @@ public class MapGenerator : MonoBehaviour
     /// </summary>
     [Header("地图配置数据")]
     public MapConfigSO mapConfig;
+
+    [Header("地图布局数据")]
+    public MapLayoutSO mapLayout;
 
     /// <summary>
     /// 房间预制体
@@ -63,9 +67,20 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    void Start()
+    // void Start()
+    // {
+    //     CreateMap();
+    // }
+    void OnEnable()
     {
-        CreateMap();
+        if (mapLayout.mapRoomDatas.Count > 0)
+        {
+            LoadMapLayout();
+        }
+        else
+        {
+            CreateMap();
+        }
     }
 
     /// <summary>
@@ -112,7 +127,7 @@ public class MapGenerator : MonoBehaviour
                 var room = Instantiate(roomPrefab, newPosition, Quaternion.identity, transform);
                 var newType = GetRandomRoomType(mapConfig.roomBlueprints[c].roomType);
                 // 设置房间数据
-                room.SetUpRoom(c,i,_roomDataDictionary[newType]);
+                room.SetUpRoom(c, i, _roomDataDictionary[newType]);
                 _rooms.Add(room);
                 currentColumnRooms.Add(room);
             }
@@ -124,7 +139,65 @@ public class MapGenerator : MonoBehaviour
             }
             preColumnRooms = currentColumnRooms;
         }
+        //保存当前布局
+        SaveMapLayout();
     }
+
+    /// <summary>
+    /// 把Map装箱
+    /// </summary>
+    private void SaveMapLayout()
+    {
+        mapLayout.mapRoomDatas.Clear();
+        foreach (var room in _rooms)
+        {
+            MapRoomData mapRoomData = new MapRoomData
+            {
+                posX = room.transform.position.x,
+                posY = room.transform.position.y,
+                column = room.colume,
+                line = room.line,
+                roomDataSO = room.roomData,
+                roomState = room.roomState
+            };
+            mapLayout.mapRoomDatas.Add(mapRoomData);
+        }
+
+        mapLayout.linePositions.Clear();
+        foreach (var line in _lines)
+        {
+            LinePosition linePosition = new LinePosition
+            {
+                startPos = new SerializableVector3(line.GetPosition(0)),
+                endPos = new SerializableVector3(line.GetPosition(1))
+            };
+            mapLayout.linePositions.Add(linePosition);
+        }
+    }
+    
+    /// <summary>
+    /// 把Map解包
+    /// </summary>
+    private void LoadMapLayout()
+    {
+        foreach (var mapRoomData in mapLayout.mapRoomDatas)
+        {
+            var newPos = new Vector3(mapRoomData.posX, mapRoomData.posY);
+            var room = Instantiate(roomPrefab, newPos, Quaternion.identity, transform);
+            room.SetUpRoom(mapRoomData.column, mapRoomData.line, mapRoomData.roomDataSO);
+            room.roomState = mapRoomData.roomState;
+            _rooms.Add(room);
+        }
+        
+        foreach(var lineData in mapLayout.linePositions)
+        {
+            var line = Instantiate(lineRenderer, transform);
+            line.SetPosition(0, lineData.startPos.ToVector3());
+            line.SetPosition(1, lineData.endPos.ToVector3());
+            _lines.Add(line);
+        }
+    }
+
 
     /// <summary>
     /// 创建列之间的连线
