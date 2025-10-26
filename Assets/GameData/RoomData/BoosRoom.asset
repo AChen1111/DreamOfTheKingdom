@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BoosRoom
   m_EditorClassIdentifier: 
   roomIcon: {fileID: 21300000, guid: 8e5bebd214d59430d8dff7bb4e40f292, type: 3}
-  roomType: 5
+  roomType: 32
   sceneToLoad:
-    m_AssetGUID: 
+    m_AssetGUID: 60cbcb485498392409980b2153719878
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 

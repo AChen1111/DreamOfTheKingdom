@@ -4,19 +4,17 @@ public class Room : MonoBehaviour
 {
     public int colume;
     public int line;
-    private SpriteRenderer _spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     public RoomDataSO roomData;
     public RoomState roomState;
 
-    void Start()
-    {
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        SetUpRoom(colume, line, roomData);
-    }
+    [Header("广播")]
+    public ObjectEventSO loadRoomEvent;
 
     private void OnMouseDown()
     {
         Debug.Log("当前类型" + roomData.roomType);
+        loadRoomEvent.RaiseEvent(roomData, this);
     }
 
 /// <summary>
@@ -30,7 +28,7 @@ public class Room : MonoBehaviour
         this.colume = colume;
         this.line = line;
         roomData = data;
-        _spriteRenderer.sprite = roomData.roomIcon;
+        spriteRenderer.sprite = roomData.roomIcon;
     }
 
 }
