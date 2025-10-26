@@ -126,6 +126,17 @@ public class MapGenerator : MonoBehaviour
                 // 实例化房间
                 var room = Instantiate(roomPrefab, newPosition, Quaternion.identity, transform);
                 var newType = GetRandomRoomType(mapConfig.roomBlueprints[c].roomType);
+
+                //设置当前房间状态
+                if(c == 0)
+                {
+                    room.roomState = RoomState.Attainable;
+                }
+                else
+                {
+                    room.roomState = RoomState.Locked;
+                }
+
                 // 设置房间数据
                 room.SetUpRoom(c, i, _roomDataDictionary[newType]);
                 _rooms.Add(room);
@@ -210,25 +221,33 @@ public class MapGenerator : MonoBehaviour
         HashSet<Room> connectedCurrentRooms = new HashSet<Room>();
         foreach (var preRoom in preColumnRooms)
         {
-            var targetRoom = CreateConnectionInRoom(preRoom, currentColumnRooms);
+            var targetRoom = CreateConnectionInRoom(preRoom, currentColumnRooms, true);
             connectedCurrentRooms.Add(targetRoom);
         }
+
         //如果有未连接的房间，反向链接这个房间
         foreach (var currentRoom in currentColumnRooms)
         {
             if (!connectedCurrentRooms.Contains(currentRoom))
             {
-                var fromRoom = preColumnRooms[Random.Range(0, preColumnRooms.Count)];
-                CreateConnectionInRoom(fromRoom, new List<Room> { currentRoom });
+                CreateConnectionInRoom(currentRoom, preColumnRooms,false);
             }
         }
     }
-    /// <summary>
-    /// 获取距离指定房间最近的房间
-    /// </summary>
-    private Room CreateConnectionInRoom(Room fromRoom, List<Room> toRooms)
+/// <summary>
+/// 创建房间之间的连线
+/// </summary>
+/// <param name="fromRoom">需要建立连接的房间</param>
+/// <param name="toRooms">被建立连接的房间</param>
+/// <param name="isForwardLink">是否为正向链接</param>
+/// <returns></returns>
+    private Room CreateConnectionInRoom(Room fromRoom, List<Room> toRooms,bool isForwardLink)
     {
         Room targetRoom = toRooms[Random.Range(0, toRooms.Count)];
+        if(isForwardLink)
+        {
+            fromRoom.linkTo.Add(new ());
+        }
         var line = Instantiate(lineRenderer, transform);
         line.SetPosition(0, fromRoom.transform.position);
         line.SetPosition(1, targetRoom.transform.position);

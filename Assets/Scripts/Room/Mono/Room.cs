@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -7,6 +8,7 @@ public class Room : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public RoomDataSO roomData;
     public RoomState roomState;
+    public List<Vector2Int> linkTo = new();
 
     [Header("广播")]
     public ObjectEventSO loadRoomEvent;
@@ -14,7 +16,10 @@ public class Room : MonoBehaviour
     private void OnMouseDown()
     {
         Debug.Log("当前类型" + roomData.roomType);
-        loadRoomEvent.RaiseEvent(roomData, this);
+        if(this.roomState == RoomState.Attainable)
+        {
+            loadRoomEvent.RaiseEvent(roomData, this);            
+        }
     }
 
 /// <summary>
