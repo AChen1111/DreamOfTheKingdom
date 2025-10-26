@@ -1,5 +1,3 @@
-using System.Threading.Tasks;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -17,20 +15,31 @@ public class SceneLoadManager : MonoBehaviour
     public AssetReference map;
 
     /// <summary>
+    /// 当前房间的行列
+    /// </summary>
+    private Vector2Int currentRoomVector;
+
+    [Header("广播")]
+    public ObjectEventSO afterRoomLoadEvent;
+
+    /// <summary>
     /// 监听房间加载事件
     /// </summary>
     /// <param name="data"></param>
     public async void OnLoadRoomEvent(object data)
     {
-        if (data is RoomDataSO)
+        if (data is Room)
         {
-            var currentData = data as RoomDataSO;
-            _currentScene = currentData.sceneToLoad;
+            var currentRoom = data as Room;
+            currentRoomVector = new(currentRoom.colume, currentRoom.line);
+            _currentScene = currentRoom.roomData.sceneToLoad;
+
         }
         //异步
 
         await UnloadCurrentSceneTask();
         await LoadSceneTask();
+        afterRoomLoadEvent.RaiseEvent(currentRoomVector,this);
     }
 
     /// <summary>

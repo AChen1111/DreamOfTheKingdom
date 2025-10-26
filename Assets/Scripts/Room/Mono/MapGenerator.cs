@@ -169,7 +169,8 @@ public class MapGenerator : MonoBehaviour
                 column = room.colume,
                 line = room.line,
                 roomDataSO = room.roomData,
-                roomState = room.roomState
+                roomState = room.roomState,
+                linkTo = room.linkTo
             };
             mapLayout.mapRoomDatas.Add(mapRoomData);
         }
@@ -195,8 +196,9 @@ public class MapGenerator : MonoBehaviour
         {
             var newPos = new Vector3(mapRoomData.posX, mapRoomData.posY);
             var room = Instantiate(roomPrefab, newPos, Quaternion.identity, transform);
-            room.SetUpRoom(mapRoomData.column, mapRoomData.line, mapRoomData.roomDataSO);
             room.roomState = mapRoomData.roomState;
+            room.SetUpRoom(mapRoomData.column, mapRoomData.line, mapRoomData.roomDataSO);
+            room.linkTo = mapRoomData.linkTo;
             _rooms.Add(room);
         }
         
@@ -244,9 +246,19 @@ public class MapGenerator : MonoBehaviour
     private Room CreateConnectionInRoom(Room fromRoom, List<Room> toRooms,bool isForwardLink)
     {
         Room targetRoom = toRooms[Random.Range(0, toRooms.Count)];
-        if(isForwardLink)
+
+        //添加到连线列表
+        if (isForwardLink)
         {
-            fromRoom.linkTo.Add(new ());
+            fromRoom.linkTo.Add(
+                new(targetRoom.colume, targetRoom.line)
+            );
+        }
+        else
+        {
+            targetRoom.linkTo.Add(
+                new(fromRoom.colume, fromRoom.line)
+            );
         }
         var line = Instantiate(lineRenderer, transform);
         line.SetPosition(0, fromRoom.transform.position);

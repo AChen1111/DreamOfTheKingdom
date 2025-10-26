@@ -18,7 +18,7 @@ public class Room : MonoBehaviour
         Debug.Log("当前类型" + roomData.roomType);
         if(this.roomState == RoomState.Attainable)
         {
-            loadRoomEvent.RaiseEvent(roomData, this);            
+            loadRoomEvent.RaiseEvent(this, this);            
         }
     }
 
@@ -34,6 +34,13 @@ public class Room : MonoBehaviour
         this.line = line;
         roomData = data;
         spriteRenderer.sprite = roomData.roomIcon;
+        spriteRenderer.color = roomState switch
+        {
+            RoomState.Locked => new Color(0.5f, 0.5f, 0.5f, 1f),
+            RoomState.Visited => new Color(0.5f, 0.8f, 0.5f, 0.5f),
+            RoomState.Attainable => Color.white,
+            _ => throw new System.NotImplementedException(),
+        };
     }
 
 }
