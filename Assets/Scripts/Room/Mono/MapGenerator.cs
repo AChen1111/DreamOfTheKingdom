@@ -67,10 +67,6 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    // void Start()
-    // {
-    //     CreateMap();
-    // }
     void OnEnable()
     {
         if (mapLayout.mapRoomDatas.Count > 0)
@@ -304,6 +300,11 @@ public class MapGenerator : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// 获取随机的一个RoomType
+    /// </summary>
+    /// <param name="flags"></param>
+    /// <returns></returns>
     private RoomType GetRandomRoomType(RoomType flags)
     {
         string[] options = flags.ToString().Split(',');
