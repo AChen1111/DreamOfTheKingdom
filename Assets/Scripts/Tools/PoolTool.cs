@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
+[DefaultExecutionOrder(-100)]
 public class PoolTool : MonoBehaviour
 {
     public GameObject objectPre;//预制体
@@ -55,5 +57,5 @@ public class PoolTool : MonoBehaviour
     {
         _pool.Release(obj);
     }
-    
+
 }
