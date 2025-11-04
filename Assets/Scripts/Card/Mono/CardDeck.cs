@@ -114,7 +114,10 @@ public class CardDeck : MonoBehaviour {
 
         SetCardLayOut(0f);
     }
-    [ContextMenu("TEST")]
+
+    
+    //!!!测试用
+    [ContextMenu("抽牌测试")]
     public void TestDrawCard()
     {
         DrawCard(10);
