@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.PlayerLoop;
 
+/// <summary>
+/// 卡牌拖拽
+/// </summary>
 public class CardDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public GameObject arrowPrefab;
@@ -9,7 +13,7 @@ public class CardDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
     private Card currentCard;
     private bool canMove;
     private bool canExecute;
-
+    private CharacterBase targetCharacter;
     private void Awake() {
         currentCard = GetComponent<Card>();
     }
@@ -31,7 +35,9 @@ public class CardDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
         switch (currentCard.cardData.cardType)
         {
             case CardType.Attack:
-                currentArrow = Instantiate(arrowPrefab, currentCard.transform.position, Quaternion.identity);
+                currentArrow = Instantiate(
+                    arrowPrefab, currentCard.transform.position, Quaternion.identity
+                    );
                 break;
             case CardType.Defense:
             case CardType.Abilities:
