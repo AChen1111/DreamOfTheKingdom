@@ -17,7 +17,10 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
     public Quaternion originalRotation;
     public int originalSortingLayer;
 
+    [Header("回收事件")]
+    public ObjectEventSO discardEvent;
     public bool isMoveing;
+    public Player player;
     void Start()
     {
         Init(cardData);
@@ -36,6 +39,7 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
             CardType.Abilities => "能力",
             _ => throw new System.NotImplementedException(),
         };
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     /// <summary>
@@ -68,5 +72,22 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
         if (isMoveing) return;
         transform.position = originalPosition + Vector3.up;
         transform.rotation = Quaternion.identity;
+    }
+
+
+    /// <summary>
+    /// 执行卡牌效果
+    /// </summary>
+    /// <param name="from">使用者</param>
+    /// <param name="to">目标</param>
+    public void ExecuteEffect(CharacterBase from,CharacterBase to)
+    {
+        //ToDo:支付cost
+        //触发回收事件
+        discardEvent.RaiseEvent(this,this);
+        foreach(var effect in cardData.effects)
+        {
+            effect.Execute(from, to);
+        }
     }
 }

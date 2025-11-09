@@ -28,6 +28,21 @@ public class CardDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
             currentCard.transform.position = worldPosition;
             canExecute = worldPosition.y > 1f;
         }
+        else
+        {
+            if(eventData.pointerEnter == null)
+            { 
+                return;
+            }
+            if(eventData.pointerEnter.CompareTag("Enemy"))
+            {
+            canExecute = true;
+            targetCharacter = eventData.pointerEnter.GetComponentInChildren<CharacterBase>();
+            return;
+            }
+            canExecute = false;
+            targetCharacter = null;
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -55,8 +70,7 @@ public class CardDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
 
         if (canExecute)
         {
-            //执行卡牌效果
-            Debug.Log($"执行卡牌:{currentCard.cardData.cardName}效果");
+            currentCard.ExecuteEffect(currentCard.player, targetCharacter);
         }
 
         else

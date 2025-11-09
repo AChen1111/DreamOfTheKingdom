@@ -12,6 +12,10 @@ public class CardDeck : MonoBehaviour {
     private List<Card> handCardObjectList = new();//当前手牌
 
     public Vector3 DeckPosition;
+    /// <summary>
+    /// 弃牌事件监听器
+    /// </summary>
+
 
 /// <summary>
 /// !!!!!测试用
@@ -106,8 +110,9 @@ public class CardDeck : MonoBehaviour {
     /// 弃牌逻辑,事件函数
     /// </summary>
     /// <param name="card"></param>
-    public void DisCard(Card card)
+    public void DisCard(object obj)
     {
+        Card card = obj as Card;
         discardDeck.Add(card.cardData);
         handCardObjectList.Remove(card);
         cardManager.DisCardObject(card.gameObject);

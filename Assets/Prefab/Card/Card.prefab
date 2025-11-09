@@ -1080,6 +1080,7 @@ GameObject:
   - component: {fileID: 3335331456819322838}
   - component: {fileID: 7621248646259882441}
   - component: {fileID: 8044429669745504151}
+  - component: {fileID: -5461950356394591149}
   m_Layer: 6
   m_Name: Card
   m_TagString: Untagged
@@ -1181,7 +1182,9 @@ MonoBehaviour:
   originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
   originalSortingLayer: 0
+  discardEvent: {fileID: 11400000, guid: 50f786add43ae0d4083af3358e74a1b8, type: 2}
   isMoveing: 0
+  player: {fileID: 0}
 --- !u!114 &8044429669745504151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,6 +1198,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 7986153357600690878, guid: be9c730242d315d49bb6577ffca85ba9, type: 3}
+--- !u!114 &-5461950356394591149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5422093255577461211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c330f07f730d3564ab892d5fc5dcc4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTag: Enemy
+  verbose: 1
 --- !u!1 &5839676855254466683
 GameObject:
   m_ObjectHideFlags: 0
