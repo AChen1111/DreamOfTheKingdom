@@ -10,7 +10,6 @@ public class DamageEffect : Effect
             case EffectTargetType.Self:
                 break;
             case EffectTargetType.Target:
-                Debug.Log("DamageEffect Execute");
                 to.TakeDamage(value);
                 break;
             case EffectTargetType.All:

@@ -585,7 +585,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -629159166334121840, guid: be0e0cce0cf405e428d90123d9ac5ed4, type: 2}
+  - {fileID: -5513895730302421835, guid: 5db06b527d7bf4a47b01e95b738b1e02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -629,8 +629,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u63CF\u8FF0\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be0e0cce0cf405e428d90123d9ac5ed4, type: 2}
-  m_sharedMaterial: {fileID: -629159166334121840, guid: be0e0cce0cf405e428d90123d9ac5ed4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5db06b527d7bf4a47b01e95b738b1e02, type: 2}
+  m_sharedMaterial: {fileID: -5513895730302421835, guid: 5db06b527d7bf4a47b01e95b738b1e02, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -951,7 +951,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -629159166334121840, guid: be0e0cce0cf405e428d90123d9ac5ed4, type: 2}
+  - {fileID: -5513895730302421835, guid: 5db06b527d7bf4a47b01e95b738b1e02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -995,8 +995,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u7C7B\u578B\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be0e0cce0cf405e428d90123d9ac5ed4, type: 2}
-  m_sharedMaterial: {fileID: -629159166334121840, guid: be0e0cce0cf405e428d90123d9ac5ed4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5db06b527d7bf4a47b01e95b738b1e02, type: 2}
+  m_sharedMaterial: {fileID: -5513895730302421835, guid: 5db06b527d7bf4a47b01e95b738b1e02, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1080,7 +1080,6 @@ GameObject:
   - component: {fileID: 3335331456819322838}
   - component: {fileID: 7621248646259882441}
   - component: {fileID: 8044429669745504151}
-  - component: {fileID: -5461950356394591149}
   m_Layer: 6
   m_Name: Card
   m_TagString: Untagged
@@ -1198,20 +1197,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 7986153357600690878, guid: be9c730242d315d49bb6577ffca85ba9, type: 3}
---- !u!114 &-5461950356394591149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5422093255577461211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c330f07f730d3564ab892d5fc5dcc4ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyTag: Enemy
-  verbose: 1
 --- !u!1 &5839676855254466683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,7 +1257,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -629159166334121840, guid: be0e0cce0cf405e428d90123d9ac5ed4, type: 2}
+  - {fileID: -5513895730302421835, guid: 5db06b527d7bf4a47b01e95b738b1e02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1316,8 +1301,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u59D3\u540D\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: be0e0cce0cf405e428d90123d9ac5ed4, type: 2}
-  m_sharedMaterial: {fileID: -629159166334121840, guid: be0e0cce0cf405e428d90123d9ac5ed4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5db06b527d7bf4a47b01e95b738b1e02, type: 2}
+  m_sharedMaterial: {fileID: -5513895730302421835, guid: 5db06b527d7bf4a47b01e95b738b1e02, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

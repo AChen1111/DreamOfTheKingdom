@@ -46,5 +46,24 @@ public class HealthBarControler : MonoBehaviour
         }
         healthBar.title = $"{currentCharacter.CurrentHP}/{currentCharacter.MaxHp}";
         healthBar.value = currentCharacter.CurrentHP;
+        
+        healthBar.RemoveFromClassList("highHealth");
+        healthBar.RemoveFromClassList("midHealth");
+        healthBar.RemoveFromClassList("lowHealth");
+        
+        //计算百分比
+        float progress = (float)currentCharacter.CurrentHP / currentCharacter.MaxHp;
+        if (progress < 0.3)
+        {
+            healthBar.AddToClassList("lowHealth");
+        }
+        else if (progress < 0.6)
+        {
+            healthBar.AddToClassList("midHealth");
+        }
+        else
+        {
+            healthBar.AddToClassList("highHealth");
+        }
     }
 }

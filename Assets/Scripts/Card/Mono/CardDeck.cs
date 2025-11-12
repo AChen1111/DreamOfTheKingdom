@@ -10,12 +10,15 @@ public class CardDeck : MonoBehaviour {
     private List<CardDataSO> drawDeck = new();//抽牌堆
     private List<CardDataSO> discardDeck = new();//弃牌堆
     private List<Card> handCardObjectList = new();//当前手牌
-
+    
     public Vector3 DeckPosition;
+    
     /// <summary>
-    /// 弃牌事件监听器
+    /// 抽牌和弃牌事件
     /// </summary>
-
+    [Header("事件广播")]
+    public IntEventSO DrawCardEvent;
+    public IntEventSO DisCardEvent;
 
 /// <summary>
 /// !!!!!测试用
@@ -23,6 +26,7 @@ public class CardDeck : MonoBehaviour {
     void Start()
     {
         InitDeck();
+        DrawCard(3);
     }
 
     //初始化牌堆
@@ -46,15 +50,21 @@ public class CardDeck : MonoBehaviour {
     /// <param name="amount">需要抽出牌的数量</param>
     private void DrawCard(int amount)
     {
+        if (drawDeck.Count < amount)
+        {
+            foreach (var _card in discardDeck)
+            {
+                drawDeck.Add(_card);
+            }
+            ShuffleDeck();
+        }
+        
         for (int i = 0; i < amount; i++)
         {
             if (drawDeck.Count == 0)
             {
-                foreach (var _card in discardDeck)
-                {
-                    drawDeck.Add(_card);
-                }
-                ShuffleDeck();
+                Debug.Log("牌堆为空");
+                return;
             }
             CardDataSO currentCardData = drawDeck[0];
             drawDeck.RemoveAt(0);
@@ -65,7 +75,9 @@ public class CardDeck : MonoBehaviour {
             handCardObjectList.Add(card);
             float delay = i * 0.1f;
             SetCardLayOut(delay);
+            DrawCardEvent.RaiseEvent(drawDeck.Count,this);//广播 牌堆的数量变化
         }
+        
     }
 
 
@@ -95,14 +107,15 @@ public class CardDeck : MonoBehaviour {
     private void ShuffleDeck()
     {
         discardDeck.Clear();
-        //todo:Ui显示变化
-
+        
+        //Ui显示变化
+        DrawCardEvent.RaiseEvent(drawDeck.Count,this);
+        DisCardEvent.RaiseEvent(discardDeck.Count,this);
+        
         for (int i = 0; i < drawDeck.Count; i++)
         {
             int randomIndex = Random.Range(0, drawDeck.Count);
-            var temp = drawDeck[i];
-            drawDeck[i] = drawDeck[randomIndex];
-            drawDeck[randomIndex] = temp;
+            (drawDeck[i], drawDeck[randomIndex]) = (drawDeck[randomIndex], drawDeck[i]);
         }
     }
 
@@ -114,9 +127,10 @@ public class CardDeck : MonoBehaviour {
     {
         Card card = obj as Card;
         discardDeck.Add(card.cardData);
+        
         handCardObjectList.Remove(card);
+        DisCardEvent.RaiseEvent(discardDeck.Count,this);//广播 弃牌堆的数量变化
         cardManager.DisCardObject(card.gameObject);
-
         SetCardLayOut(0f);
     }
 
@@ -125,6 +139,6 @@ public class CardDeck : MonoBehaviour {
     [ContextMenu("抽牌测试")]
     public void TestDrawCard()
     {
-        DrawCard(10);
+        DrawCard(1);
     }
 }

@@ -20,16 +20,9 @@ public class CharacterBase : MonoBehaviour {
     
     protected virtual void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
-
-    // void Update()
-    // {
-    //     if(isDead)
-    //     {
-    //         animator.SetBool("isDead", true);
-    //     }
-    // }
+    
     protected virtual void Start()
     {
         hp.maxValue = maxHp;
@@ -38,18 +31,12 @@ public class CharacterBase : MonoBehaviour {
     public virtual void TakeDamage(int damage)
     {
         if (isDead) return;
-
         CurrentHP -= damage;
         if (CurrentHP <= 0)
         {
             CurrentHP = 0;
             isDead = true;
-            //todo 死亡动画
             animator.SetBool("isDead", true);
-        }
-        else
-        {
-            CurrentHP -= damage;
         }
     }
 }

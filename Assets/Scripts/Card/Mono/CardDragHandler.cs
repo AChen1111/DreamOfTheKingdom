@@ -1,7 +1,7 @@
-using System;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.PlayerLoop;
+
 
 /// <summary>
 /// 卡牌拖拽
@@ -14,19 +14,37 @@ public class CardDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
     private bool canMove;
     private bool canExecute;
     private CharacterBase targetCharacter;
+    
     private void Awake() {
         currentCard = GetComponent<Card>();
     }
+    
+    /// <summary>
+    /// 在回收时初始化状态
+    /// </summary>
+    private void OnDisable()
+    {
+        canMove = false;
+        canExecute = false;
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
         if(canMove)
         {
             currentCard.isMoveing = true;
             Vector3 screenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f);
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPoint);
+            if (Camera.main != null)
+            {
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPoint);
 
-            currentCard.transform.position = worldPosition;
-            canExecute = worldPosition.y > 1f;
+                currentCard.transform.position = worldPosition;
+                canExecute = worldPosition.y > 1f;
+            }
+            else
+            {
+                Debug.Log("Can't find card");
+            }
         }
         else
         {
@@ -36,9 +54,9 @@ public class CardDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, I
             }
             if(eventData.pointerEnter.CompareTag("Enemy"))
             {
-            canExecute = true;
-            targetCharacter = eventData.pointerEnter.GetComponentInChildren<CharacterBase>();
-            return;
+                canExecute = true;
+                targetCharacter = eventData.pointerEnter.GetComponent<CharacterBase>();
+                return;
             }
             canExecute = false;
             targetCharacter = null;
