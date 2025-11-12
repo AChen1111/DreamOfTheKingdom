@@ -870,6 +870,8 @@ GameObject:
   - component: {fileID: 996154573}
   - component: {fileID: 996154572}
   - component: {fileID: 996154574}
+  - component: {fileID: 996154576}
+  - component: {fileID: 996154575}
   m_Layer: 0
   m_Name: Card Deck
   m_TagString: Untagged
@@ -937,6 +939,112 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &996154575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996154571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1259afede7f3f4c8cf4cd2ee304422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSO: {fileID: 11400000, guid: b308bf2936cedc748b3e827bc76778bf, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 996154572}
+        m_TargetAssemblyTypeName: CardDeck, Assembly-CSharp
+        m_MethodName: PlayerTurnEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &996154576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996154571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1259afede7f3f4c8cf4cd2ee304422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSO: {fileID: 11400000, guid: 1cf39ff6113a4344490e4bbdce2826a9, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 996154572}
+        m_TargetAssemblyTypeName: CardDeck, Assembly-CSharp
+        m_MethodName: PlayerTurnBegin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &1043475210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1043475211}
+  - component: {fileID: 1043475212}
+  m_Layer: 0
+  m_Name: TurnManage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1043475211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043475210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1043475212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043475210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b3916ef4b250447b386494312cac39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnState: 0
+  enemyTurnDuration: 3
+  playerTurnEvent: {fileID: 11400000, guid: 1cf39ff6113a4344490e4bbdce2826a9, type: 2}
+  enemyTurnEvent: {fileID: 11400000, guid: 8dbec83355989464ebc487fe0ee20fbc, type: 2}
+  playerTurnEndEvent: {fileID: 11400000, guid: b308bf2936cedc748b3e827bc76778bf, type: 2}
+  enemyTurnEndEvent: {fileID: 11400000, guid: 809547984e4dad243adea197350cf69c, type: 2}
 --- !u!1 &1124759419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,6 +1555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05358ebef1e6b704bbcedc9e20bf3ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnBaseManager: {fileID: 1043475212}
 --- !u!114 &1637315453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1646,6 +1755,7 @@ SceneRoots:
   - {fileID: 1223999433}
   - {fileID: 1536300428}
   - {fileID: 1962504767}
+  - {fileID: 1043475211}
   - {fileID: 19401477}
   - {fileID: 17930108}
   - {fileID: 996154573}

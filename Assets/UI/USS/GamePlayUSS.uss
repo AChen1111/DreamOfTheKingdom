@@ -1,0 +1,13 @@
+.turn {
+}
+
+.turn:hover {
+    scale: 1.1 1.1;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out-bounce;
+}
+
+.turn:active {
+    scale: 1.2 1.2;
+    transition-timing-function: ease-in-out-bounce;
+}

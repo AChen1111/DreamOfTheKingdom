@@ -26,7 +26,6 @@ public class CardDeck : MonoBehaviour {
     void Start()
     {
         InitDeck();
-        DrawCard(3);
     }
 
     //初始化牌堆
@@ -134,6 +133,28 @@ public class CardDeck : MonoBehaviour {
         SetCardLayOut(0f);
     }
 
+    /// <summary>
+    /// 监听玩家回合开始事件
+    /// </summary>
+    public void PlayerTurnBegin()
+    {
+        DrawCard(3);
+    }
+    
+    /// <summary>
+    /// 监听玩家回合结束事件
+    /// </summary>
+    public void PlayerTurnEnd()
+    {
+        for (int i = 0; i < handCardObjectList.Count; i++)
+        {
+            var card = handCardObjectList[i];
+            discardDeck.Add(card.cardData);
+            cardManager.DisCardObject(card.gameObject);
+        }
+        handCardObjectList.Clear();
+        DisCardEvent.RaiseEvent(discardDeck.Count,this);//广播 弃牌堆的数量变化
+    }
     
     //!!!测试用
     [ContextMenu("抽牌测试")]
