@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+
 public class TurnBaseManager : MonoBehaviour
 {
     [SerializeField]
@@ -15,9 +16,7 @@ public class TurnBaseManager : MonoBehaviour
     public ObjectEventSO enemyTurnEvent;
     public ObjectEventSO playerTurnEndEvent;
     public ObjectEventSO enemyTurnEndEvent;
-
-    [Header("面板")]
-    public GamePlayPanel panel;
+    
     private void Start()
     {
         turnState = state.None;
@@ -73,7 +72,11 @@ public class TurnBaseManager : MonoBehaviour
         yield return new WaitForSeconds(enemyTurnDuration);
         EnemyTurnEnd();
     }
-
+    
+    /// <summary>
+    /// 进入回合倒计时
+    /// </summary>
+    /// <returns></returns>
     IEnumerator gameBeginTimer()
     {
         yield return new WaitForSeconds(0.2f);
@@ -81,6 +84,9 @@ public class TurnBaseManager : MonoBehaviour
     }
 }
 
+/// <summary>
+/// 状态枚举
+/// </summary>
 public enum state
 {
     None,

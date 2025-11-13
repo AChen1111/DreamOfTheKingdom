@@ -20,7 +20,6 @@ public class GamePlayPanel : MonoBehaviour
         turnButton.clickable.clicked += () =>
         {
             turnBaseManager.swapTurn();
-            // UpdateTurnLabel();
         };
         
         turnLabel.text = "游戏开始";
@@ -73,11 +72,6 @@ public class GamePlayPanel : MonoBehaviour
     /// <param name="mana"></param>
     public void UpdatePlayerMana(int mana)
     {
-        // if (energyNum == null)
-        // {
-        //     Debug.Log("当前能量槽为空");
-        //     return;
-        // }
         energyNum.text = mana.ToString();
     }
 }

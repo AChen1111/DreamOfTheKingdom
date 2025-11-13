@@ -21,9 +21,10 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
     [Header("事件广播")]
     public ObjectEventSO discardEvent;
     public IntEventSO costEvent;
+    
     [Header("状态")]
     public bool isMoveing;
-    public bool isAvailable;
+    public bool isAvailable;//是否可用
     public Player player;
     void Start()
     {
@@ -57,7 +58,10 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
         originalRotation = rot;
         originalSortingLayer = GetComponent<SortingGroup>().sortingOrder;
     }
-
+    
+    /// <summary>
+    /// 重置位置
+    /// </summary>
     public void ResetPosition()
     {
         transform.position = originalPosition;
@@ -86,7 +90,10 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
     /// <param name="to">目标</param>
     public void ExecuteEffect(CharacterBase from,CharacterBase to)
     {
-        //ToDo:支付cost
+        //如果cost 不足返回
+        if (!isAvailable) return;
+        
+        //广播 卡牌产生费用事件
         costEvent.RaiseEvent(cardData.cost,this);
         //触发回收事件
         discardEvent.RaiseEvent(this,this);
@@ -95,10 +102,15 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
             effect.Execute(from, to);
         }
     }
-
+    
+    
+    /// <summary>
+    /// 根据cost更新状态
+    /// </summary>
     public void UpdateCardState()
     {
         isAvailable = cardData.cost <= player.CurrentMana;
+        
         cardCost.color = isAvailable ? Color.green : Color.red;
     }
 }
