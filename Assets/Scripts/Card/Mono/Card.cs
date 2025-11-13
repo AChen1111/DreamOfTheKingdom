@@ -9,6 +9,7 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
     public SpriteRenderer cardSprite;
     public TextMeshPro cardDescription;
     public TextMeshPro cardType;
+    public TextMeshPro cardCost;
 
     [Header("卡牌数据")]
     public CardDataSO cardData;
@@ -17,9 +18,12 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
     public Quaternion originalRotation;
     public int originalSortingLayer;
 
-    [Header("回收事件")]
+    [Header("事件广播")]
     public ObjectEventSO discardEvent;
+    public IntEventSO costEvent;
+    [Header("状态")]
     public bool isMoveing;
+    public bool isAvailable;
     public Player player;
     void Start()
     {
@@ -31,7 +35,7 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
         cardSprite.sprite = cardData.cardImage;
         cardName.text = cardData.cardName;
         cardDescription.text = cardData.description;
-
+        cardCost.text = cardData.cost.ToString();
         cardType.text = cardData.cardType switch
         {
             CardType.Attack => "攻击",
@@ -83,11 +87,18 @@ public class Card : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
     public void ExecuteEffect(CharacterBase from,CharacterBase to)
     {
         //ToDo:支付cost
+        costEvent.RaiseEvent(cardData.cost,this);
         //触发回收事件
         discardEvent.RaiseEvent(this,this);
         foreach(var effect in cardData.effects)
         {
             effect.Execute(from, to);
         }
+    }
+
+    public void UpdateCardState()
+    {
+        isAvailable = cardData.cost <= player.CurrentMana;
+        cardCost.color = isAvailable ? Color.green : Color.red;
     }
 }

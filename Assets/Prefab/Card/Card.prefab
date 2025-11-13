@@ -1177,12 +1177,15 @@ MonoBehaviour:
   cardSprite: {fileID: 5323060061260919961}
   cardDescription: {fileID: 6926863961847338751}
   cardType: {fileID: 3364533415275155406}
+  cardCost: {fileID: 0}
   cardData: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
   originalSortingLayer: 0
   discardEvent: {fileID: 11400000, guid: 50f786add43ae0d4083af3358e74a1b8, type: 2}
+  costEvent: {fileID: 11400000, guid: c3bf07f06a2f20544b542b666dcd3d76, type: 2}
   isMoveing: 0
+  isAvailable: 0
   player: {fileID: 0}
 --- !u!114 &8044429669745504151
 MonoBehaviour:

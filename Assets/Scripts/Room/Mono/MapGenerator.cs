@@ -56,8 +56,11 @@ public class MapGenerator : MonoBehaviour
 
     void Awake()
     {
-        _screenHeight = Camera.main.orthographicSize * 2f;
-        _screenWidth = _screenHeight * Camera.main.aspect;
+        if (Camera.main != null)
+        {
+            _screenHeight = Camera.main.orthographicSize * 2f;
+            _screenWidth = _screenHeight * Camera.main.aspect;
+        }
 
         _columnWidth = _screenWidth / (mapConfig.roomBlueprints.Count + 1);
 

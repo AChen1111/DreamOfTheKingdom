@@ -15,7 +15,9 @@ public class TurnBaseManager : MonoBehaviour
     public ObjectEventSO enemyTurnEvent;
     public ObjectEventSO playerTurnEndEvent;
     public ObjectEventSO enemyTurnEndEvent;
-    
+
+    [Header("面板")]
+    public GamePlayPanel panel;
     private void Start()
     {
         turnState = state.None;
@@ -74,7 +76,7 @@ public class TurnBaseManager : MonoBehaviour
 
     IEnumerator gameBeginTimer()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         swapTurn();
     }
 }

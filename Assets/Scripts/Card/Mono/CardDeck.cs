@@ -86,6 +86,7 @@ public class CardDeck : MonoBehaviour {
         {
             var currentCard = handCardObjectList[i];
             var cardTransform = cardLayoutManager.GetCardTransform(i, handCardObjectList.Count);
+            currentCard.UpdateCardState();
             currentCard.isMoveing = true;
             ///抽牌动画
             currentCard.transform.DOScale(Vector3.one, 0.2f).SetDelay(delay).OnComplete(() =>
@@ -150,7 +151,12 @@ public class CardDeck : MonoBehaviour {
         {
             var card = handCardObjectList[i];
             discardDeck.Add(card.cardData);
-            cardManager.DisCardObject(card.gameObject);
+            
+            //弃牌动画
+            card.isMoveing = true;
+            card.transform.DOScale(Vector3.zero, 0.2f).OnComplete(
+                ()=>{cardManager.DisCardObject(card.gameObject);}
+                );
         }
         handCardObjectList.Clear();
         DisCardEvent.RaiseEvent(discardDeck.Count,this);//广播 弃牌堆的数量变化
