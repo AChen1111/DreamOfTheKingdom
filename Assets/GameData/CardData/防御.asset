@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e12f7f1236177d648834d73c5f8f99d6, type: 3}
-  m_Name: rty
+  m_Name: "\u9632\u5FA1"
   m_EditorClassIdentifier: 
-  cardName: rty
-  cardImage: {fileID: 21300000, guid: ca906760bec1a42a59352b0862693fef, type: 3}
-  cost: 0
+  cardName: "\u666E\u901A\u9632\u5FA1"
+  cardImage: {fileID: 21300000, guid: db56b57fa88deb34e8a1b904bd86e96c, type: 3}
+  cost: 1
   description: 
-  cardType: 0
+  cardType: 1
   effects:
-  - {fileID: 11400000, guid: 38fab6b1fe50d1a4dbd8d4a708781fcd, type: 2}
+  - {fileID: 11400000, guid: a19e3950635cbcb4494811ca404205d2, type: 2}

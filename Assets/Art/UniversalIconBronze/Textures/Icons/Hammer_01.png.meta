@@ -1,10 +1,14 @@
 fileFormatVersion: 2
-guid: 05c475d2bd34ede459afaa94eb1bf361
+guid: e6b241e893089a444ada2b7be8ed5f7b
+AssetOrigin:
+  serializedVersion: 1
+  productId: 120654
+  packageName: Universal Bronze Icon Pack
+  packageVersion: 1.0
+  assetPath: Assets/UniversalIconBronze/Textures/Icons/Hammer_01.png
+  uploadId: 250731
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -59215764052943874
-    second: "\u5FAE\u4FE1\u56FE\u7247_20251104213538_293_31_0"
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +50,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -66,9 +70,9 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   swizzle: 50462976
-  cookieLightType: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
@@ -82,7 +86,7 @@ TextureImporter:
     overridden: 0
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -95,37 +99,15 @@ TextureImporter:
     overridden: 0
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: "\u5FAE\u4FE1\u56FE\u7247_20251104213538_293_31_0"
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 810
-        height: 1440
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: efb558a839f9d2ff0800000000000000
-      internalID: -59215764052943874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -134,8 +116,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      "\u5FAE\u4FE1\u56FE\u7247_20251104213538_293_31_0": -59215764052943874
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

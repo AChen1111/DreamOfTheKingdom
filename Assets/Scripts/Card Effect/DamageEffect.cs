@@ -5,6 +5,7 @@ public class DamageEffect : Effect
 {
     public override void Execute(CharacterBase from, CharacterBase to)
     {
+        if (to == null) return;
         switch (targetType)
         {
             case EffectTargetType.Self:
