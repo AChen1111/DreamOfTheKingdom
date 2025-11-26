@@ -1,15 +1,19 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
 public class HealthBarControler : MonoBehaviour
 {
     public Transform barTransform;
-
+    public Sprite buffSprite;
+    [FormerlySerializedAs("deBuff")] public Sprite deBuffSprite;
+    
     private CharacterBase currentCharacter;
     private UIDocument healthBarUI;
     private ProgressBar healthBar;
     private VisualElement defense;
     private Label defenseLabel;
+    private VisualElement buffIcon;
     void Awake()
     {
         currentCharacter = GetComponent<CharacterBase>();
@@ -35,6 +39,7 @@ public class HealthBarControler : MonoBehaviour
         defenseLabel = defense.Q<Label>("defenseNum");
         SetPositionInWorld(healthBar, barTransform.position, Vector2.zero);
         defense.style.display = DisplayStyle.None;
+        buffIcon = healthBar.Q<VisualElement>("Buff");
     }
 
     void Update()
@@ -74,5 +79,21 @@ public class HealthBarControler : MonoBehaviour
         //防御值显示部分
         defense.style.display = currentCharacter.defense.currentValue > 0 ? DisplayStyle.Flex : DisplayStyle.None;
         defenseLabel.text = currentCharacter.defense.currentValue.ToString();
+        
+        //buff显示部分
+        switch (currentCharacter.getBuffState())
+        {
+            case 0:
+                buffIcon.style.display = DisplayStyle.None;
+                break;
+            case 1:
+                buffIcon.style.backgroundImage = new StyleBackground(buffSprite);
+                buffIcon.style.display = DisplayStyle.Flex;
+                break;
+            case -1:
+                buffIcon.style.backgroundImage = new StyleBackground(deBuffSprite);
+                buffIcon.style.display = DisplayStyle.Flex;
+                break;
+        }
     }
 }

@@ -15,8 +15,20 @@ MonoBehaviour:
   m_GroupName: Card
   m_GUID: 0f1cad5859ab4074cb0d6ee90a3cf494
   m_SerializeEntries:
+  - m_GUID: 40c70817a4884774e9895e113d8a0253
+    m_Address: "\u9632\u5FA1"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8f7dc3c9617079542a2617a6b4a39566
     m_Address: Card01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac7f3a73d5725064bb4d3515fa2cd93e
+    m_Address: "\u6062\u590D"
     m_ReadOnly: 0
     m_SerializedLabels:
     - CardData

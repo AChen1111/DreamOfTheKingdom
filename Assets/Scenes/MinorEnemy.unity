@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 209902747}
   - component: {fileID: 209902748}
   - component: {fileID: 209902749}
+  - component: {fileID: 209902750}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -206,6 +207,7 @@ MonoBehaviour:
   maxHp: 50
   hp: {fileID: 11400000, guid: 323eb2d03ac51e7419a3a9926596b735, type: 2}
   defense: {fileID: 11400000, guid: 25cae03dd6c68af46ad5f12f30e8320e, type: 2}
+  buffRound: {fileID: 11400000, guid: 25cae03dd6c68af46ad5f12f30e8320e, type: 2}
   buff: {fileID: 1130192706}
   deBuff: {fileID: 363141502}
 --- !u!61 &209902747
@@ -286,6 +288,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barTransform: {fileID: 928974158}
+  buffSprite: {fileID: 21300000, guid: 810448b82870c45058f8b2de5423274a, type: 3}
+  deBuffSprite: {fileID: 21300000, guid: d7f03361f8c0a4e1293a0b3eb59d0320, type: 3}
+--- !u!114 &209902750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209902744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1259afede7f3f4c8cf4cd2ee304422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSO: {fileID: 0}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 209902746}
+        m_TargetAssemblyTypeName: CharacterBase, Assembly-CSharp
+        m_MethodName: UpdateBuffRound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &363141502
 GameObject:
   m_ObjectHideFlags: 0

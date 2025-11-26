@@ -44,10 +44,10 @@ public class CardDeck : MonoBehaviour {
     }
 
     /// <summary>
-    /// 抽牌
+    /// 抽牌 
     /// </summary>
     /// <param name="amount">需要抽出牌的数量</param>
-    private void DrawCard(int amount)
+    public void DrawCard(int amount)
     {
         if (drawDeck.Count < amount)
         {
