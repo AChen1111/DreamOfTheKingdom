@@ -449,7 +449,7 @@ MonoBehaviour:
   buffRound: {fileID: 11400000, guid: bc98efb84a1b13141b3103b6bef2f284, type: 2}
   buff: {fileID: 1130192706}
   deBuff: {fileID: 363141502}
-  actions: {fileID: 11400000, guid: cfd3eaa6147e8614f922da153c36c190, type: 2}
+  actions: {fileID: 11400000, guid: 0118d4eaa3ea36144b1114ed37eca645, type: 2}
   curAction: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &209902751

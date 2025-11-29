@@ -21,9 +21,16 @@ namespace Character
             StartCoroutine(WaitForUiLoad());
         
         }
-        
-        
-        
+
+        public override void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
+            if (isDead)
+            {
+                loseEvent.RaiseEvent();
+            }
+        }
+
         /// <summary>
         /// 监听 回合开始事件
         /// </summary>

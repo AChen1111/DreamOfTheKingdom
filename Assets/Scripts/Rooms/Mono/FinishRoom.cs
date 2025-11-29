@@ -1,3 +1,4 @@
+using System;
 using Events.ScripctsObject;
 using UnityEngine;
 
@@ -8,6 +9,11 @@ namespace Rooms.Mono
         public ObjectEventSO loadRoomEvent;
     
         public void OnFinishRoom()
+        {
+            loadRoomEvent.RaiseEvent(null, this);
+        }
+
+        public void OnMouseDown()
         {
             loadRoomEvent.RaiseEvent(null, this);
         }
