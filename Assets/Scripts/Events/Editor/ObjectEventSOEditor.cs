@@ -1,8 +1,11 @@
-using UnityEngine;
+using Events.ScripctsObject;
 using UnityEditor;
 
-[CustomEditor(typeof(ObjectEventSO))]
-public class ObjectEventSOEditor : BaseEventSoEditor<object>
+namespace Events.Editor
 {
+    [CustomEditor(typeof(ObjectEventSO))]
+    public class ObjectEventSOEditor : BaseEventSoEditor<object>
+    {
     
+    }
 }

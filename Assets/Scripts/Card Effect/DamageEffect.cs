@@ -1,26 +1,31 @@
+using Character;
+using Tools;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DamageEffect", menuName = "Card Effect/DamageEffect", order = 0)]
-public class DamageEffect : Effect
+namespace Card_Effect
 {
-    public override void Execute(CharacterBase from, CharacterBase to)
+    [CreateAssetMenu(fileName = "DamageEffect", menuName = "Card Effect/DamageEffect", order = 0)]
+    public class DamageEffect : Effect
     {
-        if (to == null) return;
-        int atk = (int) (value * from.AtkBase);
-        switch (targetType)
+        public override void Execute(CharacterBase from, CharacterBase to)
         {
-            case EffectTargetType.Self:
-                break;
-            case EffectTargetType.Target:
-                to.TakeDamage(atk);
-                break;
-            case EffectTargetType.All:
-                var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                foreach(var enemy in enemies)
-                {
-                    enemy.GetComponent<CharacterBase>().TakeDamage(atk);
-                }
-                break;
+            if (to == null) return;
+            int atk = (int) (value * from.AtkBase);
+            switch (targetType)
+            {
+                case EffectTargetType.Self:
+                    break;
+                case EffectTargetType.Target:
+                    to.TakeDamage(atk);
+                    break;
+                case EffectTargetType.All:
+                    var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    foreach(var enemy in enemies)
+                    {
+                        enemy.GetComponent<CharacterBase>().TakeDamage(atk);
+                    }
+                    break;
+            }
         }
     }
 }

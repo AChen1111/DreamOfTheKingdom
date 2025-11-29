@@ -1,7 +1,10 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ObjectEventSO", menuName = "Events/ObjectEventSO")]
-public class ObjectEventSO : BaseEventSO<object>
+namespace Events.ScripctsObject
 {
+    [CreateAssetMenu(fileName = "ObjectEventSO", menuName = "Events/ObjectEventSO")]
+    public class ObjectEventSO : BaseEventSO<object>
+    {
     
+    }
 }

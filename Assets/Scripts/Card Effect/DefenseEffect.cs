@@ -1,25 +1,30 @@
+using Character;
+using Tools;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DefenseEffect", menuName = "Card Effect/DefenseEffect")]
-public class DefenseEffect : Effect
+namespace Card_Effect
 {
-    public override void Execute(CharacterBase from, CharacterBase to)
+    [CreateAssetMenu(fileName = "DefenseEffect", menuName = "Card Effect/DefenseEffect")]
+    public class DefenseEffect : Effect
     {
-        switch (targetType)
+        public override void Execute(CharacterBase from, CharacterBase to)
         {
-            case EffectTargetType.Self:
-                from.UpdateDefense(value);
-                break;
-            case EffectTargetType.Target:
-                to.UpdateDefense(value);
-                break;
-            case EffectTargetType.All:
-                var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                foreach(var enemy in enemies)
-                {
-                    enemy.GetComponent<CharacterBase>().UpdateDefense(value);
-                }
-                break;
+            switch (targetType)
+            {
+                case EffectTargetType.Self:
+                    from.UpdateDefense(value);
+                    break;
+                case EffectTargetType.Target:
+                    to.UpdateDefense(value);
+                    break;
+                case EffectTargetType.All:
+                    var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    foreach(var enemy in enemies)
+                    {
+                        enemy.GetComponent<CharacterBase>().UpdateDefense(value);
+                    }
+                    break;
+            }
         }
     }
 }

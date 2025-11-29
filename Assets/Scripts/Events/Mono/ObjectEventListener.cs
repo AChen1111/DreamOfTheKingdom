@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public class ObjectEventListener : BaseEventListener<object>
+namespace Events.Mono
 {
+    public class ObjectEventListener : BaseEventListener<object>
+    {
 
+    }
 }

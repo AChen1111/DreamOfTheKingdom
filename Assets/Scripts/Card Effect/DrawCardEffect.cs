@@ -1,11 +1,16 @@
-﻿using UnityEngine;
+﻿using Character;
+using Events.ScripctsObject;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "DrawCardEffect", menuName = "Card Effect/DrawCardEffect")]
-public class DrawCardEffect : Effect
+namespace Card_Effect
 {
-    public IntEventSO DrawCardEffectEvent;
-    public override void Execute(CharacterBase from, CharacterBase to)
+    [CreateAssetMenu(fileName = "DrawCardEffect", menuName = "Card Effect/DrawCardEffect")]
+    public class DrawCardEffect : Effect
     {
-        DrawCardEffectEvent?.RaiseEvent(value);
+        public IntEventSO DrawCardEffectEvent;
+        public override void Execute(CharacterBase from, CharacterBase to)
+        {
+            DrawCardEffectEvent?.RaiseEvent(value);
+        }
     }
 }

@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public class IntEventListener : BaseEventListener<int>
+namespace Events.Mono
 {
+    public class IntEventListener : BaseEventListener<int>
+    {
 
+    }
 }

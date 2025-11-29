@@ -1,13 +1,17 @@
-using System;
+using Character;
+using Tools;
 using UnityEngine;
 
-/// <summary>
-/// 所有卡牌效果的基类
-/// </summary>
-public abstract class Effect : ScriptableObject
+namespace Card_Effect
 {
-    public int value;
-    public EffectTargetType targetType;
+    /// <summary>
+    /// 所有卡牌效果的基类
+    /// </summary>
+    public abstract class Effect : ScriptableObject
+    {
+        public int value;
+        public EffectTargetType targetType;
 
-    public abstract void Execute(CharacterBase from, CharacterBase to);
+        public abstract void Execute(CharacterBase from, CharacterBase to);
+    }
 }

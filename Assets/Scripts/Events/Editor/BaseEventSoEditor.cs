@@ -1,41 +1,44 @@
-using UnityEngine;
-using UnityEditor;
 using System.Collections.Generic;
+using Events.ScripctsObject;
+using UnityEditor;
+using UnityEngine;
 
-
-[CustomEditor(typeof(BaseEventSO<>))]
-public class BaseEventSoEditor<T> : Editor
+namespace Events.Editor
 {
-    private BaseEventSO<T> baseEventSO;
-    private void OnEnable()
+    [CustomEditor(typeof(BaseEventSO<>))]
+    public class BaseEventSoEditor<T> : UnityEditor.Editor
     {
-        if (baseEventSO == null)
-            baseEventSO = (BaseEventSO<T>)target;
-    }
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-        EditorGUILayout.LabelField("订阅数量: " + GetListeners().Count);
-        foreach (var listener in GetListeners())
+        private BaseEventSO<T> baseEventSO;
+        private void OnEnable()
         {
-            EditorGUILayout.LabelField("Listener: " + listener.ToString());
+            if (baseEventSO == null)
+                baseEventSO = (BaseEventSO<T>)target;
         }
-    }
-
-    private List<MonoBehaviour> GetListeners()
-    {
-        List<MonoBehaviour> listeners = new List<MonoBehaviour>();
-        if (baseEventSO == null || baseEventSO.OnEventRaised == null)
-            return listeners;
-        var subscribers = baseEventSO.OnEventRaised.GetInvocationList();
-        foreach (var subscriber in subscribers)
+        public override void OnInspectorGUI()
         {
-            var obj = subscriber.Target as MonoBehaviour;
-            if (obj != null && !listeners.Contains(obj))
+            base.OnInspectorGUI();
+            EditorGUILayout.LabelField("订阅数量: " + GetListeners().Count);
+            foreach (var listener in GetListeners())
             {
-                listeners.Add(obj);
+                EditorGUILayout.LabelField("Listener: " + listener.ToString());
             }
         }
-        return listeners;
+
+        private List<MonoBehaviour> GetListeners()
+        {
+            List<MonoBehaviour> listeners = new List<MonoBehaviour>();
+            if (baseEventSO == null || baseEventSO.OnEventRaised == null)
+                return listeners;
+            var subscribers = baseEventSO.OnEventRaised.GetInvocationList();
+            foreach (var subscriber in subscribers)
+            {
+                var obj = subscriber.Target as MonoBehaviour;
+                if (obj != null && !listeners.Contains(obj))
+                {
+                    listeners.Add(obj);
+                }
+            }
+            return listeners;
+        }
     }
 }

@@ -1,29 +1,33 @@
+using Events.ScripctsObject;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BaseEventListener<T> : MonoBehaviour
+namespace Events.Mono
 {
-    public BaseEventSO<T> eventSO;
-
-    /// <summary>
-    /// 回调函数列表
-    /// </summary>
-    public UnityEvent<T> response;
-
-    void OnEnable()
+    public class BaseEventListener<T> : MonoBehaviour
     {
-        if (eventSO != null)
-            eventSO.OnEventRaised += OnEventRaised;
-    }
+        public BaseEventSO<T> eventSO;
 
-    void OnDisable()
-    {
-        if (eventSO != null)
-            eventSO.OnEventRaised -= OnEventRaised;
-    }
+        /// <summary>
+        /// 回调函数列表
+        /// </summary>
+        public UnityEvent<T> response;
 
-    private void OnEventRaised(T value)
-    {
-        response?.Invoke(value);
+        void OnEnable()
+        {
+            if (eventSO != null)
+                eventSO.OnEventRaised += OnEventRaised;
+        }
+
+        void OnDisable()
+        {
+            if (eventSO != null)
+                eventSO.OnEventRaised -= OnEventRaised;
+        }
+
+        private void OnEventRaised(T value)
+        {
+            response?.Invoke(value);
+        }
     }
 }

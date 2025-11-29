@@ -1,3 +1,4 @@
+using Events.ScripctsObject;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "IntVariable", menuName = "Variables/IntVariable", order = 0)]

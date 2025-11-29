@@ -1,15 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CardLibrarySO", menuName = "Card/CardLibrarySO")]
-public class CardLibrarySO : ScriptableObject
+namespace Card.ScripctsObject
 {
-    public List<CardLibraryEntry> cardLibraries;
-}
+    [CreateAssetMenu(fileName = "CardLibrarySO", menuName = "Card/CardLibrarySO")]
+    public class CardLibrarySO : ScriptableObject
+    {
+        public List<CardLibraryEntry> cardLibraries;
+    }
 
-[System.Serializable]
-public struct CardLibraryEntry
-{
-    public CardDataSO cardData;
-    public int amount;
+    [System.Serializable]
+    public struct CardLibraryEntry
+    {
+        public CardDataSO cardData;
+        public int amount;
+    }
 }

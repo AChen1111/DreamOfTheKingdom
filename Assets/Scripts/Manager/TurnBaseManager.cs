@@ -1,96 +1,98 @@
-using System;
 using System.Collections;
+using Events.ScripctsObject;
 using UnityEngine;
 
-
-public class TurnBaseManager : MonoBehaviour
+namespace Manager
 {
-    [SerializeField]
-    public state turnState;
-    
-    [Header("敌人回合持续时间")]
-    public float enemyTurnDuration;
-    
-    [Header("事件广播")]
-    public ObjectEventSO playerTurnEvent;
-    public ObjectEventSO enemyTurnEvent;
-    public ObjectEventSO playerTurnEndEvent;
-    public ObjectEventSO enemyTurnEndEvent;
-    
-    private void Start()
+    public class TurnBaseManager : MonoBehaviour
     {
-        turnState = state.None;
-        StartCoroutine(gameBeginTimer());
-    }
+        [SerializeField]
+        public state turnState;
     
-    /// <summary>
-    /// 回合转换 并执行对应方法
-    /// </summary>
-    public void swapTurn()
-    {
-        if (turnState == state.PlayerTurn)
+        [Header("敌人回合持续时间")]
+        public float enemyTurnDuration;
+    
+        [Header("事件广播")]
+        public ObjectEventSO playerTurnEvent;
+        public ObjectEventSO enemyTurnEvent;
+        public ObjectEventSO playerTurnEndEvent;
+        public ObjectEventSO enemyTurnEndEvent;
+    
+        private void Start()
         {
-            PlayerTurnEnd();
-            turnState = state.EnemyTurn;
-            EnemyTurnBegin();
+            turnState = state.None;
+            StartCoroutine(gameBeginTimer());
         }
-        else if(turnState is state.None or state.EnemyTurn)
+    
+        /// <summary>
+        /// 回合转换 并执行对应方法
+        /// </summary>
+        public void swapTurn()
         {
-            turnState = state.PlayerTurn;
-            PlayerTurnBegin();
+            if (turnState == state.PlayerTurn)
+            {
+                PlayerTurnEnd();
+                turnState = state.EnemyTurn;
+                EnemyTurnBegin();
+            }
+            else if(turnState is state.None or state.EnemyTurn)
+            {
+                turnState = state.PlayerTurn;
+                PlayerTurnBegin();
+            }
+        }
+    
+        public void PlayerTurnBegin()
+        {
+            playerTurnEvent.RaiseEvent(null,this);
+        }
+
+        public void PlayerTurnEnd()
+        {
+            playerTurnEndEvent.RaiseEvent(null,this);
+        }
+
+        public void EnemyTurnBegin()
+        {
+            enemyTurnEvent.RaiseEvent(null,this);
+            StartCoroutine(EnemyTurnTimer());
+        }
+
+        public void EnemyTurnEnd()
+        {
+            enemyTurnEndEvent.RaiseEvent(null,this);
+            swapTurn();
+        }
+    
+        /// <summary>
+        /// 敌人回合计时器
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator EnemyTurnTimer()
+        {
+            yield return new WaitForSeconds(enemyTurnDuration);
+            EnemyTurnEnd();
+        }
+    
+        /// <summary>
+        /// 进入回合倒计时
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator gameBeginTimer()
+        {
+            yield return new WaitForSeconds(0.2f);
+            swapTurn();
         }
     }
-    
-    public void PlayerTurnBegin()
-    {
-        playerTurnEvent.RaiseEvent(null,this);
-    }
 
-    public void PlayerTurnEnd()
-    {
-        playerTurnEndEvent.RaiseEvent(null,this);
-    }
-
-    public void EnemyTurnBegin()
-    {
-        enemyTurnEvent.RaiseEvent(null,this);
-        StartCoroutine(EnemyTurnTimer());
-    }
-
-    public void EnemyTurnEnd()
-    {
-        enemyTurnEndEvent.RaiseEvent(null,this);
-        swapTurn();
-    }
-    
     /// <summary>
-    /// 敌人回合计时器
+    /// 状态枚举
     /// </summary>
-    /// <returns></returns>
-    IEnumerator EnemyTurnTimer()
+    public enum state
     {
-        yield return new WaitForSeconds(enemyTurnDuration);
-        EnemyTurnEnd();
+        None,
+        PlayerTurn,
+        EnemyTurn,
+        BattleEnd,
     }
-    
-    /// <summary>
-    /// 进入回合倒计时
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator gameBeginTimer()
-    {
-        yield return new WaitForSeconds(0.2f);
-        swapTurn();
-    }
-}
-
-/// <summary>
-/// 状态枚举
-/// </summary>
-public enum state
-{
-    None,
-    PlayerTurn,
-    EnemyTurn,
-    BattleEnd,
 }

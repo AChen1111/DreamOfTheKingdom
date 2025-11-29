@@ -1,17 +1,22 @@
-﻿using UnityEngine;
+﻿using Character;
+using Tools;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "HealEffect", menuName = "Card Effect/HealEffect")]
-public class HealEffect : Effect
+namespace Card_Effect
 {
-    public override void Execute(CharacterBase from, CharacterBase to)
+    [CreateAssetMenu(fileName = "HealEffect", menuName = "Card Effect/HealEffect")]
+    public class HealEffect : Effect
     {
-        if (targetType == EffectTargetType.Self)
+        public override void Execute(CharacterBase from, CharacterBase to)
         {
-            from.HealHealth(value);
-        }
-        else if (targetType == EffectTargetType.Target)
-        {
-            to.HealHealth(value);
+            if (targetType == EffectTargetType.Self)
+            {
+                from.HealHealth(value);
+            }
+            else if (targetType == EffectTargetType.Target)
+            {
+                to.HealHealth(value);
+            }
         }
     }
 }
