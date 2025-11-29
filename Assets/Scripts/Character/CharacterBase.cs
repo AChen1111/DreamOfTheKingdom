@@ -27,7 +27,7 @@ namespace Character
         //攻击增益效果
         private float atkBuff = 0.5f;
         //攻击减益效果
-        private float atkDeBuff = 0.5f;
+        private float atkDeBuff = 0.25f;
     
         public int CurrentHP
         {
@@ -58,8 +58,7 @@ namespace Character
         public virtual void TakeDamage(int damage)
         {
             if (isDead) return;
-
-            damage = (int)(damage * atkBase);//实际伤害 = 基值 * 基数
+            
             //伤害够
             if (damage >= defense.currentValue)
             {
@@ -125,7 +124,7 @@ namespace Character
             }
             else
             {
-                atkBase = preiAtkBase - atkBuff;
+                atkBase = preiAtkBase - atkDeBuff;
                 StartCoroutine(doDeBuffAnimation()); 
             }
 

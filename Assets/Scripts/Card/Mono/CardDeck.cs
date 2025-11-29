@@ -24,15 +24,7 @@ namespace Card.Mono
         [Header("事件广播")]
         public IntEventSO DrawCardEvent;
         public IntEventSO DisCardEvent;
-
-        /// <summary>
-        /// !!!!!测试用
-        /// </summary>
-        void Start()
-        {
-            InitDeck();
-        }
-
+        
         //初始化牌堆
         public void InitDeck()
         {

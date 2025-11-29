@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e33905b88d8112b49873e6e4fe6b7f56, type: 3}
-  m_Name: NewGame Library
+  m_Script: {fileID: 11500000, guid: b3321eda9e534eaab47a7765c5a0b7ee, type: 3}
+  m_Name: WinEvent
   m_EditorClassIdentifier: 
-  cardLibraries:
-  - cardData: {fileID: 11400000, guid: 8f7dc3c9617079542a2617a6b4a39566, type: 2}
-    amount: 10
+  description: 
+  lastSender: 

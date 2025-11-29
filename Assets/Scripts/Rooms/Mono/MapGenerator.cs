@@ -271,9 +271,6 @@ namespace Rooms.Mono
 
 
         [ContextMenu("ReGenerateMap")]
-        /// <summary>
-        /// 重新生成地图
-        /// </summary>
         public void ReGenerateMap()
         {
             // 删除已有房间

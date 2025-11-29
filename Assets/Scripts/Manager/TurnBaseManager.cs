@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using Card.Mono;
+using Character;
 using Events.ScripctsObject;
 using UnityEngine;
 
@@ -17,13 +20,28 @@ namespace Manager
         public ObjectEventSO enemyTurnEvent;
         public ObjectEventSO playerTurnEndEvent;
         public ObjectEventSO enemyTurnEndEvent;
-    
+        
+        [Header("场景物体")]
+        public GameObject Player;
+        public GameObject playPanel;
+        public GameObject winPanel;
+        public GameObject losePanel;
+        
+        [Header("牌堆")]
+        public CardDeck  cardDeck;
+        
+        private void Reset()
+        {
+            cardDeck = GameObject.Find("Card Deck").GetComponent<CardDeck>();
+        }
+        
+
         private void Start()
         {
             turnState = state.None;
-            StartCoroutine(gameBeginTimer());
         }
-    
+        
+
         /// <summary>
         /// 回合转换 并执行对应方法
         /// </summary>
@@ -55,24 +73,17 @@ namespace Manager
         public void EnemyTurnBegin()
         {
             enemyTurnEvent.RaiseEvent(null,this);
-            StartCoroutine(EnemyTurnTimer());
         }
-
+        
+        /// <summary>
+        /// 监听 敌人回合结束事件
+        /// </summary>
         public void EnemyTurnEnd()
         {
             enemyTurnEndEvent.RaiseEvent(null,this);
             swapTurn();
         }
-    
-        /// <summary>
-        /// 敌人回合计时器
-        /// </summary>
-        /// <returns></returns>
-        IEnumerator EnemyTurnTimer()
-        {
-            yield return new WaitForSeconds(enemyTurnDuration);
-            EnemyTurnEnd();
-        }
+        
     
         /// <summary>
         /// 进入回合倒计时
@@ -82,6 +93,53 @@ namespace Manager
         {
             yield return new WaitForSeconds(0.2f);
             swapTurn();
+        }
+        
+        /// <summary>
+        /// 监听 游戏开始事件
+        /// </summary>
+        public void OnGameBegin()
+        {
+            Debug.Log("Game Begin Game Started222");
+            ResetPanel();
+            //初始化牌堆
+            cardDeck.InitDeck();
+            StartCoroutine(gameBeginTimer());
+        }
+        
+        /// <summary>
+        /// 对外接口 重置面板
+        /// </summary>
+        public void ResetPanel()
+        {
+            Player.SetActive(true);
+            playPanel.SetActive(true);
+        }
+        /// <summary>
+        /// 监听 游戏胜利结束事件
+        /// </summary>
+        public void OnGameWin()
+        {
+            this.turnState = state.BattleEnd;
+            winPanel.SetActive(true);
+        }
+        /// <summary>
+        /// 监听 游戏失败事件
+        /// </summary>
+        public void OnGameLose()
+        {
+            this.turnState = state.BattleEnd;
+            losePanel.SetActive(true);
+        }
+        
+        /// <summary>
+        /// 对外接口 退出房间时调用
+        /// </summary>
+        public void ExitTurn()
+        {
+            turnState = state.None;
+            Player.SetActive(false);
+            playPanel.SetActive(false);
         }
     }
 

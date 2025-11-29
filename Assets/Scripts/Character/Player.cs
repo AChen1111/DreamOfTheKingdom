@@ -1,4 +1,5 @@
 using System.Collections;
+using Events.ScripctsObject;
 using UnityEngine;
 
 namespace Character
@@ -13,26 +14,36 @@ namespace Character
             set => playerMana.SetValue(value);
         }
 
+        [Header("事件广播")] public VoidEventSO loseEvent;
         private void OnEnable()
         {
             playerMana.maxValue  = maxMana;
             StartCoroutine(WaitForUiLoad());
         
         }
-    
+        
+        
+        
         /// <summary>
         /// 监听 回合开始事件
         /// </summary>
-        public void NewTurn()
+        public void OnPlayerTurnBegin()
         {
             CurrentMana = maxMana;
+            ResetDefense();
+            UpdateBuffRound();
         }
-    
+
         /// <summary>
         /// 监听 卡牌打出事件
         /// </summary>
         /// <param name="cost"></param>
-        public void UpdateMana(int cost)
+        public void OnCardCostHappen(int cost)
+        {
+            UpdateMana(cost);
+        }
+
+        private void UpdateMana(int cost)
         {
             CurrentMana -= cost;
             if (CurrentMana < 0)

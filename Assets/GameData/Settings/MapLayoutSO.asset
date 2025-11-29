@@ -18,7 +18,7 @@ MonoBehaviour:
     column: 0
     line: 0
     roomDataSO: {fileID: 11400000, guid: a874f01ef7af5db4c8074caf8e7688f4, type: 2}
-    roomState: 2
+    roomState: 1
     linkTo:
     - {x: 1, y: 1}
   - posX: -9.666667
@@ -26,69 +26,53 @@ MonoBehaviour:
     column: 0
     line: 1
     roomDataSO: {fileID: 11400000, guid: a874f01ef7af5db4c8074caf8e7688f4, type: 2}
-    roomState: 2
-    linkTo:
-    - {x: 1, y: 3}
-    - {x: 1, y: 0}
-    - {x: 1, y: 2}
-  - posX: -5.985888
-    posY: 3.6
-    column: 1
-    line: 0
-    roomDataSO: {fileID: 11400000, guid: a874f01ef7af5db4c8074caf8e7688f4, type: 2}
     roomState: 0
     linkTo:
-    - {x: 2, y: 0}
-  - posX: -5.669824
-    posY: 1.1999998
+    - {x: 1, y: 0}
+  - posX: -6.3844995
+    posY: 2
     column: 1
-    line: 1
+    line: 0
     roomDataSO: {fileID: 11400000, guid: f86ed1a4f4abde440a9eb6935ef73663, type: 2}
     roomState: 0
     linkTo:
     - {x: 2, y: 3}
-  - posX: -6.2889647
-    posY: -1.2000003
+    - {x: 2, y: 0}
+  - posX: -6.3466187
+    posY: -2
     column: 1
-    line: 2
-    roomDataSO: {fileID: 11400000, guid: f86ed1a4f4abde440a9eb6935ef73663, type: 2}
-    roomState: 0
+    line: 1
+    roomDataSO: {fileID: 11400000, guid: a874f01ef7af5db4c8074caf8e7688f4, type: 2}
+    roomState: 1
     linkTo:
     - {x: 2, y: 1}
-  - posX: -5.7269135
-    posY: -3.6000004
-    column: 1
-    line: 3
-    roomDataSO: {fileID: 11400000, guid: a874f01ef7af5db4c8074caf8e7688f4, type: 2}
-    roomState: 0
-    linkTo:
-    - {x: 2, y: 0}
     - {x: 2, y: 2}
-  - posX: -2.7443862
+  - posX: -2.3438225
     posY: 3.6
     column: 2
     line: 0
     roomDataSO: {fileID: 11400000, guid: 54a96dccd808d3e44b631b27991c9491, type: 2}
     roomState: 0
     linkTo:
-    - {x: 3, y: 1}
-  - posX: -2.5201523
+    - {x: 3, y: 0}
+    - {x: 3, y: 2}
+  - posX: -2.5640512
     posY: 1.1999998
     column: 2
     line: 1
-    roomDataSO: {fileID: 11400000, guid: 4715eaa34a6fbad448c5c2a1ab673668, type: 2}
+    roomDataSO: {fileID: 11400000, guid: 54a96dccd808d3e44b631b27991c9491, type: 2}
     roomState: 0
     linkTo:
-    - {x: 3, y: 2}
-  - posX: -2.8016639
+    - {x: 3, y: 1}
+  - posX: -2.1749978
     posY: -1.2000003
     column: 2
     line: 2
-    roomDataSO: {fileID: 11400000, guid: a874f01ef7af5db4c8074caf8e7688f4, type: 2}
-    roomState: 0
+    roomDataSO: {fileID: 11400000, guid: 54a96dccd808d3e44b631b27991c9491, type: 2}
+    roomState: 1
     linkTo:
-    - {x: 3, y: 0}
-  - posX: -2.8458905
+    - {x: 3, y: 1}
+  - posX: -2.1002514
     posY: -3.6000004
     column: 2
     line: 3
@@ -96,27 +80,27 @@ MonoBehaviour:
     roomState: 0
     linkTo:
     - {x: 3, y: 0}
-  - posX: 1.2030982
+  - posX: 1.3717942
     posY: 3
     column: 3
     line: 0
-    roomDataSO: {fileID: 11400000, guid: 4715eaa34a6fbad448c5c2a1ab673668, type: 2}
+    roomDataSO: {fileID: 11400000, guid: b7a788e1b741f7d449a7e3b7aeb828d5, type: 2}
     roomState: 0
     linkTo:
     - {x: 4, y: 0}
-  - posX: 0.65437376
+  - posX: 1.2774149
     posY: 0
     column: 3
     line: 1
-    roomDataSO: {fileID: 11400000, guid: 54a96dccd808d3e44b631b27991c9491, type: 2}
-    roomState: 0
+    roomDataSO: {fileID: 11400000, guid: 4715eaa34a6fbad448c5c2a1ab673668, type: 2}
+    roomState: 2
     linkTo:
     - {x: 4, y: 0}
-  - posX: 1.1686841
+  - posX: 0.8479578
     posY: -3
     column: 3
     line: 2
-    roomDataSO: {fileID: 11400000, guid: 54a96dccd808d3e44b631b27991c9491, type: 2}
+    roomDataSO: {fileID: 11400000, guid: b7a788e1b741f7d449a7e3b7aeb828d5, type: 2}
     roomState: 0
     linkTo:
     - {x: 4, y: 0}

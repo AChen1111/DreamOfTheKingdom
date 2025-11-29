@@ -22,9 +22,19 @@ namespace Character.Enemy
             //拷贝一份SO文件 防止多个敌人共享一份SO
             this.hp = ScriptableObject.Instantiate(hp);
             this.defense = ScriptableObject.Instantiate(defense);
+            this.buffRound = ScriptableObject.Instantiate(buffRound);
             
             //进入敌人队列
             EnemyManager.Instance.AddEnemy(this);
+        }
+
+        public override void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
+            if (isDead)
+            {
+                EnemyManager.Instance.DisEnemy();
+            }
         }
 
         /// <summary>

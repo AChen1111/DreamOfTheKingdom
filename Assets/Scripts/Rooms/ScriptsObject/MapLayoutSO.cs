@@ -8,7 +8,14 @@ namespace Rooms.ScriptsObject
     public class MapLayoutSO : ScriptableObject
     {
         public List<MapRoomData> mapRoomDatas = new List<MapRoomData>();
-        public List<LinePosition> linePositions = new List<LinePosition>(); 
+        public List<LinePosition> linePositions = new List<LinePosition>();
+
+        [ContextMenu("Reset")]
+        public void ResetPanel()
+        {
+            mapRoomDatas.Clear();
+            linePositions.Clear();
+        }
     }
 
 

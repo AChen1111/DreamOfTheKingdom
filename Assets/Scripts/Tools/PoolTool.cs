@@ -10,7 +10,7 @@ namespace Tools
         public GameObject objectPre;//预制体
         private ObjectPool<GameObject> _pool;
 
-        private void Start()
+        private void Awake()
         {
             //对象池的建立
             _pool = new(

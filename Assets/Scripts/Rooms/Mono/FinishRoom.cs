@@ -7,7 +7,7 @@ namespace Rooms.Mono
     {
         public ObjectEventSO loadRoomEvent;
     
-        private void OnMouseDown()
+        public void OnFinishRoom()
         {
             loadRoomEvent.RaiseEvent(null, this);
         }

@@ -18,4 +18,4 @@ MonoBehaviour:
   description: 1
   cardType: 0
   effects:
-  - {fileID: 11400000, guid: 38fab6b1fe50d1a4dbd8d4a708781fcd, type: 2}
+  - {fileID: 11400000, guid: 65318973cde7feb4bba641c33f87496c, type: 2}
