@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using Events.ScripctsObject;
 using Rooms.Mono;
 using UnityEngine;
@@ -16,8 +19,11 @@ namespace Manager
         /// <summary>
         /// 地图的引用
         /// </summary>
+        [Header("场景")]
         public AssetReference map;
-
+        public AssetReference menu;
+        public AssetReference intro;
+        
         /// <summary>
         /// 当前房间的行列
         /// </summary>
@@ -25,6 +31,19 @@ namespace Manager
 
         [Header("广播")]
         public ObjectEventSO afterRoomLoadEvent;
+        
+        /// <summary>
+        /// 测试时 不要进入这个函数
+        /// </summary>
+        private void Awake()
+        {
+// #if UNITY_EDITOR
+//             // 在编辑器里，如果不是正在 Play，就直接返回
+//             if (!Application.isPlaying)
+//                 return;
+// #endif
+            LoadIntro();
+        }
 
         /// <summary>
         /// 监听房间加载事件
@@ -44,6 +63,7 @@ namespace Manager
             await UnloadCurrentSceneTask();
             await LoadSceneTask();
             afterRoomLoadEvent.RaiseEvent(currentRoomVector,this);
+            
         }
 
         /// <summary>
@@ -75,6 +95,27 @@ namespace Manager
             _currentScene = map;
             await LoadSceneTask();
         }
+        
+        /// <summary>
+        /// 监听菜单加载事件
+        /// </summary>
+        public async void LoadMenu()
+        {
+            await UnloadCurrentSceneTask();
+            _currentScene = menu;
+            await LoadSceneTask();
+            UIManager.Instance.OnMenuLoaded();
+        }
+        
+        /// <summary>
+        /// 加载 过场动画
+        /// </summary>
+        private async void LoadIntro()
+        {
+            _currentScene = intro;
+            await LoadSceneTask();
+        }
+        
     }
 }
 

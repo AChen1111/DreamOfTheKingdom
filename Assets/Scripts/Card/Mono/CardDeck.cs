@@ -158,12 +158,20 @@ namespace Card.Mono
             handCardObjectList.Clear();
             DisCardEvent.RaiseEvent(discardDeck.Count,this);//广播 弃牌堆的数量变化
         }
-    
-        //!!!测试用
-        [ContextMenu("抽牌测试")]
-        public void TestDrawCard()
+        
+        /// <summary>
+        /// 退出room 弃掉所有手牌
+        /// </summary>
+        public void DisAllCards()
         {
-            DrawCard(1);
+            for (int i = 0; i < handCardObjectList.Count; i++)
+            {
+                var card = handCardObjectList[i];
+                discardDeck.Add(card.cardData);
+                cardManager.DisCardObject(card.gameObject);
+            }
+            handCardObjectList.Clear();
         }
+
     }
 }

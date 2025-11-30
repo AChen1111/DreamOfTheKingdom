@@ -21,12 +21,6 @@ namespace Manager
         public ObjectEventSO playerTurnEndEvent;
         public ObjectEventSO enemyTurnEndEvent;
         
-        [Header("场景物体")]
-        public GameObject Player;
-        public GameObject playPanel;
-        public GameObject winPanel;
-        public GameObject losePanel;
-        
         [Header("牌堆")]
         public CardDeck  cardDeck;
         
@@ -100,28 +94,21 @@ namespace Manager
         /// </summary>
         public void OnGameBegin()
         {
-            Debug.Log("Game Begin Game Started222");
-            ResetPanel();
             //初始化牌堆
             cardDeck.InitDeck();
             StartCoroutine(gameBeginTimer());
+            UIManager.Instance.OnRoomLoaded();
         }
         
-        /// <summary>
-        /// 对外接口 重置面板
-        /// </summary>
-        public void ResetPanel()
-        {
-            Player.SetActive(true);
-            playPanel.SetActive(true);
-        }
+        
+        
         /// <summary>
         /// 监听 游戏胜利结束事件
         /// </summary>
         public void OnGameWin()
         {
             this.turnState = state.BattleEnd;
-            winPanel.SetActive(true);
+            UIManager.Instance.OnGameWin();
         }
         /// <summary>
         /// 监听 游戏失败事件
@@ -129,7 +116,7 @@ namespace Manager
         public void OnGameLose()
         {
             this.turnState = state.BattleEnd;
-            losePanel.SetActive(true);
+            UIManager.Instance.OnGameOver();
         }
         
         /// <summary>
@@ -137,9 +124,9 @@ namespace Manager
         /// </summary>
         public void ExitTurn()
         {
+            cardDeck.DisAllCards();
             turnState = state.None;
-            Player.SetActive(false);
-            playPanel.SetActive(false);
+            UIManager.Instance.OnRoomOver();
         }
     }
 

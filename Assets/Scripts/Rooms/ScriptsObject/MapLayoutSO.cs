@@ -9,9 +9,8 @@ namespace Rooms.ScriptsObject
     {
         public List<MapRoomData> mapRoomDatas = new List<MapRoomData>();
         public List<LinePosition> linePositions = new List<LinePosition>();
-
-        [ContextMenu("Reset")]
-        public void ResetPanel()
+        
+        public void ResetMapSO()
         {
             mapRoomDatas.Clear();
             linePositions.Clear();

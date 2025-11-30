@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Rooms.ScriptsObject;
 using Tools;
@@ -56,7 +57,7 @@ namespace Rooms.Mono
         /// </summary>
         public List<RoomDataSO> roomDataList = new List<RoomDataSO>();
         private Dictionary<RoomType,RoomDataSO> _roomDataDictionary = new Dictionary<RoomType, RoomDataSO>();
-
+        
         void Awake()
         {
             if (Camera.main != null)
@@ -84,12 +85,14 @@ namespace Rooms.Mono
                 CreateMap();
             }
         }
+        
 
         /// <summary>
         /// 创建地图
         /// </summary>
         public void CreateMap()
         {
+            Debug.Log("Creating Map");
             //前一列的房间列表
             List<Room> preColumnRooms = new List<Room>();
             // 根据地图配置生成房间
@@ -221,7 +224,7 @@ namespace Rooms.Mono
         /// <param name="currentColumnRooms"></param>
         private void CreateConnectionsInColumn(List<Room> preColumnRooms, List<Room> currentColumnRooms)
         {
-            /// 记录已连接的当前列房间，防止遗漏
+            // 记录已连接的当前列房间，防止遗漏
             HashSet<Room> connectedCurrentRooms = new HashSet<Room>();
             foreach (var preRoom in preColumnRooms)
             {
@@ -315,5 +318,7 @@ namespace Rooms.Mono
 
             return (RoomType)System.Enum.Parse(typeof(RoomType), randomOption);
         }
+        
+
     }
 }

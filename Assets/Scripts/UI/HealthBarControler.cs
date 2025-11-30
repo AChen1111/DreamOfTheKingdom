@@ -17,9 +17,11 @@ namespace UI
         private VisualElement defense;
         private Label defenseLabel;
         private VisualElement buffIcon;
-        void Awake()
+        
+        void OnEnable()
         {
             currentCharacter = GetComponent<CharacterBase>();
+            
             Init();
         }
 

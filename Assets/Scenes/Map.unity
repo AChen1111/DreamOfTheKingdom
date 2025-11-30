@@ -216,6 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1690399275}
   - component: {fileID: 1690399276}
+  - component: {fileID: 1690399277}
   m_Layer: 0
   m_Name: Map Generator
   m_TagString: Untagged
@@ -262,6 +263,34 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b7a788e1b741f7d449a7e3b7aeb828d5, type: 2}
   - {fileID: 11400000, guid: 54a96dccd808d3e44b631b27991c9491, type: 2}
   - {fileID: 11400000, guid: 4715eaa34a6fbad448c5c2a1ab673668, type: 2}
+--- !u!114 &1690399277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690399274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6904d2d4bd2d4ea8ad48592d7138a2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSO: {fileID: 11400000, guid: e3650311005b13d48b4851ec046c608e, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1690399276}
+        m_TargetAssemblyTypeName: Rooms.Mono.MapGenerator, Assembly-CSharp
+        m_MethodName: InitMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
