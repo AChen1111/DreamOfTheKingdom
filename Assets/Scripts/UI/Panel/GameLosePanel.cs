@@ -1,4 +1,5 @@
 ﻿using System;
+using Events.ScripctsObject;
 using Manager;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ namespace UI.Panel
     {
         public Button btnBack;
         public TurnBaseManager turnBaseManager;
-
+        public ObjectEventSO loadMenuEvent;
         private void Reset()
         {
             turnBaseManager = GameObject.Find("TurnManage").GetComponent<TurnBaseManager>();
@@ -18,7 +19,13 @@ namespace UI.Panel
         private void Awake()
         {
             btnBack = GetComponentInChildren<Button>();
-            //todo:回到主界面
+            btnBack.onClick.AddListener((() =>
+                    {
+                        loadMenuEvent.RaiseEvent(null,this);
+                        gameObject.SetActive(false);
+                    }
+                    ));
         }
+        
     }
 }

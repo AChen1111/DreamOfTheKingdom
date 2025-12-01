@@ -17,6 +17,9 @@ namespace Character.Enemy
         [Header("事件广播")]
         public ObjectEventSO EnemyTurnOverEvent;
         public VoidEventSO PlayerWinEvent;
+        
+        
+        
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -28,12 +31,24 @@ namespace Character.Enemy
             Instance = this;
         }
 
-        public void AddEnemy(Enemy enemy)
+        private void AddEnemy(Enemy enemy)
         {
             _enemies.Add(enemy);
             count++;
         }
         
+        
+        //开始时初始化
+        public void ResetEnemies()
+        {
+            _enemies.Clear();
+            count = 0;
+            var enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+            foreach (var enemy in enemies)
+            {
+                AddEnemy(enemy);
+            }
+        }
         
         /// <summary>
         /// 监听 敌人回合开始事件 执行敌人的action
@@ -64,6 +79,7 @@ namespace Character.Enemy
         private void ClearEnemies()
         {
             _enemies.Clear();
+            count = 0;
         }
         
         /// <summary>

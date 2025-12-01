@@ -21,7 +21,6 @@ namespace UI
         void OnEnable()
         {
             currentCharacter = GetComponent<CharacterBase>();
-            
             Init();
         }
 

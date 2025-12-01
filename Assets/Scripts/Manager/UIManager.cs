@@ -72,6 +72,7 @@ namespace Manager
         {
             unloadPanel();
             loadPanel(menuPanel);
+            player.SetActive(false);
         }
         
         /// <summary>

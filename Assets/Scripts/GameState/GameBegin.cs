@@ -11,6 +11,7 @@ namespace GameState
         //
         public void Awake()
         {
+            Debug.Log("GameBegin Awake");
             gameBeginEvent.RaiseEvent(this);
         }
     }

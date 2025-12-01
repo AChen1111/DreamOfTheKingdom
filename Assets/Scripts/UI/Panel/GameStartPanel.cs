@@ -1,6 +1,8 @@
 using System;
+using Character;
 using Events.ScripctsObject;
 using Manager;
+using Rooms.ScriptsObject;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -11,6 +13,10 @@ namespace UI.Panel
     {
         public Button btnStart;
         public Button btnQuit;
+        
+        public MapLayoutSO map;
+        public IntVariable PlayerHp;
+        public Player player;
         
         [Header("事件广播")]
         public ObjectEventSO loadMapEvent;
@@ -23,6 +29,7 @@ namespace UI.Panel
 
         private void Awake()
         {
+            
             btnStart.onClick.AddListener(() =>
                 {
                     UIManager.Instance.OnMenuOver();
@@ -32,6 +39,13 @@ namespace UI.Panel
                 );
             
             btnQuit.onClick.AddListener(Application.Quit);
+        }
+
+        private void OnEnable()
+        {
+            map.ResetMapSO();
+            PlayerHp.currentValue = PlayerHp.maxValue;
+            player.isDead = false;
         }
     }
 }

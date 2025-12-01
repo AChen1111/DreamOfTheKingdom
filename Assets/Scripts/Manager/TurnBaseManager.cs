@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Card.Mono;
 using Character;
+using Character.Enemy;
 using Events.ScripctsObject;
 using UnityEngine;
 
@@ -30,12 +31,6 @@ namespace Manager
         }
         
 
-        private void Start()
-        {
-            turnState = state.None;
-        }
-        
-
         /// <summary>
         /// 回合转换 并执行对应方法
         /// </summary>
@@ -56,6 +51,7 @@ namespace Manager
     
         public void PlayerTurnBegin()
         {
+            if (turnState == state.BattleEnd) return;
             playerTurnEvent.RaiseEvent(null,this);
         }
 
@@ -66,6 +62,7 @@ namespace Manager
 
         public void EnemyTurnBegin()
         {
+            if (turnState == state.BattleEnd) return;
             enemyTurnEvent.RaiseEvent(null,this);
         }
         
@@ -94,10 +91,12 @@ namespace Manager
         /// </summary>
         public void OnGameBegin()
         {
+            turnState = state.None;
             //初始化牌堆
             cardDeck.InitDeck();
             StartCoroutine(gameBeginTimer());
             UIManager.Instance.OnRoomLoaded();
+            EnemyManager.Instance.ResetEnemies();
         }
         
         
@@ -116,6 +115,7 @@ namespace Manager
         public void OnGameLose()
         {
             this.turnState = state.BattleEnd;
+            cardDeck.DisAllCards();
             UIManager.Instance.OnGameOver();
         }
         
@@ -125,7 +125,7 @@ namespace Manager
         public void ExitTurn()
         {
             cardDeck.DisAllCards();
-            turnState = state.None;
+            turnState = state.BattleEnd;
             UIManager.Instance.OnRoomOver();
         }
     }
@@ -138,6 +138,6 @@ namespace Manager
         None,
         PlayerTurn,
         EnemyTurn,
-        BattleEnd,
+        BattleEnd
     }
 }

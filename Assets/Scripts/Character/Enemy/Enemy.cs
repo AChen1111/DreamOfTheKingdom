@@ -23,9 +23,6 @@ namespace Character.Enemy
             this.hp = ScriptableObject.Instantiate(hp);
             this.defense = ScriptableObject.Instantiate(defense);
             this.buffRound = ScriptableObject.Instantiate(buffRound);
-            
-            //进入敌人队列
-            EnemyManager.Instance.AddEnemy(this);
         }
 
         public override void TakeDamage(int damage)
@@ -42,6 +39,10 @@ namespace Character.Enemy
         /// </summary>
         public void getAction()
         {
+            if (player == null)
+            {
+                player = FindFirstObjectByType<Player>();
+            }
             curAction = actions.getAction();
         }
     
