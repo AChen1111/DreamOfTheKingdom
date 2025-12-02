@@ -10,7 +10,8 @@ namespace UI.Panel
         [Header("UI Elements")]
         public Button btnBack;
         public Button btnChoose;
-        
+        public GameObject choosePanel;
+            
         public TurnBaseManager turnBaseManager;
 
         private void Reset()
@@ -26,7 +27,11 @@ namespace UI.Panel
                     turnBaseManager.ExitTurn();
                     gameObject.SetActive(false);//关闭自己
                 });
-            //todo:卡牌选择的监听
+            btnChoose.onClick.AddListener(() =>
+                {
+                    choosePanel.SetActive(true);
+                }
+                );
         }
     }
 }

@@ -53,6 +53,10 @@ namespace UI
 
         void UpdateHealthBar()
         {
+            if (currentCharacter == null)
+            {
+                currentCharacter = GetComponent<CharacterBase>();
+            }
             if(currentCharacter.isDead)
             {
                 healthBar.style.display = DisplayStyle.None;
@@ -99,6 +103,17 @@ namespace UI
                     buffIcon.style.display = DisplayStyle.Flex;
                     break;
             }
+        }
+
+        public void OnGameStart()
+        {
+            currentCharacter = GetComponent<CharacterBase>();
+            Init();
+        }
+
+        public void OnGameOver()
+        {
+            healthBar.style.display = DisplayStyle.None;
         }
     }
 }
