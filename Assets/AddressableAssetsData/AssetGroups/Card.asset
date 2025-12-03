@@ -15,20 +15,68 @@ MonoBehaviour:
   m_GroupName: Card
   m_GUID: 0f1cad5859ab4074cb0d6ee90a3cf494
   m_SerializeEntries:
+  - m_GUID: 14f9949346e635942a412a216754611d
+    m_Address: "\u7A76\u6781\u4E00\u51FB"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 40c70817a4884774e9895e113d8a0253
     m_Address: "\u9632\u5FA1"
     m_ReadOnly: 0
     m_SerializedLabels:
     - CardData
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 425fec285ac7bb34eaa5c518c7029509
+    m_Address: "\u62BD2\u5F20\u724C"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4273f48f8b946384c8f5030ab224a177
+    m_Address: "\u51CF\u5C11\u653B\u51FB\u529B"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 50f12b51a7a11b54e9754118ed2ca47d
+    m_Address: "\u80FD\u91CF"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8f7dc3c9617079542a2617a6b4a39566
-    m_Address: Card01
+    m_Address: "\u653B\u51FB"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9186f49612ac546448f0e05e5b775e44
+    m_Address: "\u7EC8\u7ED3"
     m_ReadOnly: 0
     m_SerializedLabels:
     - CardData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ac7f3a73d5725064bb4d3515fa2cd93e
     m_Address: "\u6062\u590D"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b056dd506fc162942b37b85657707e9a
+    m_Address: "\u706B\u7403\u672F"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ceb0dfb9c4d1f3a4ca67312d06aa011a
+    m_Address: "\u76FE\u5899"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ddae84812dac5be4792bef9b2adcf3ce
+    m_Address: "\u589E\u52A0\u653B\u51FB\u529B"
     m_ReadOnly: 0
     m_SerializedLabels:
     - CardData

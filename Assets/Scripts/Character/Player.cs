@@ -64,5 +64,14 @@ namespace Character
             yield return new WaitForEndOfFrame();
             CurrentMana = playerMana.maxValue;
         }
+        
+        /// <summary>
+        /// 增加能量
+        /// </summary>
+        /// <param name="value"></param>
+        public void AddMana(int value)
+        {
+            CurrentMana += value;
+        }
     }
 }

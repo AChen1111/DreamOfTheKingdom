@@ -66,21 +66,24 @@ namespace UI.Panel
 
             foreach (var buttonObj in _buttons)
             {
+                int index = 0;
                 var btn = buttonObj.GetComponent<Button>();
 
+                var index1 = index;
                 btn.onClick.AddListener(() =>
                 {
                     foreach (var otherObj in _buttons)
                     {
                         var otherBtn = otherObj.GetComponent<Button>();
-                        // 除了当前按钮之外的全部禁用
                         if (otherBtn != btn)
                         {
                             otherBtn.interactable = false;
                         }
                     }
                     btn.interactable = false;
+                    playerCardInfo.AddCard(_cardLibraryEntries[index1]);
                 });
+                index++;
             }
         }
 

@@ -1,30 +1,24 @@
 ﻿using System;
 using Character;
-using Character.Enemy;
 using Tools;
 using UnityEngine;
 
 namespace Card_Effect
 {
-    [CreateAssetMenu(fileName = "DeStrengthEffect", menuName = "Card Effect/DeStrengthEffect")]
-    public class DeStrengthEffect : Effect
+    [CreateAssetMenu(fileName = "DefenseEffect", menuName = "Card Effect/AddManaEffect")]
+    public class AddManaEffect : Effect
     {
         public override void Execute(CharacterBase from, CharacterBase to)
         {
+            Player manaPlayer = from as Player;
             switch (targetType)
             {
                 case EffectTargetType.Self:
-                    from.UpdateAtkBuffRound(value,false);
+                    if (manaPlayer != null) manaPlayer.AddMana(value);
                     break;
                 case EffectTargetType.Target:
-                    to.UpdateAtkBuffRound(value,false);
                     break;
                 case EffectTargetType.All:
-                    var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                    foreach(var enemy in enemies)
-                    {
-                        enemy.GetComponent<CharacterBase>().UpdateAtkBuffRound(value,false);
-                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

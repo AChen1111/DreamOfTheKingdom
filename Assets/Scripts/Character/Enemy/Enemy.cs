@@ -27,6 +27,7 @@ namespace Character.Enemy
 
         public override void TakeDamage(int damage)
         {
+            if(isDead) return;
             base.TakeDamage(damage);
             if (isDead)
             {

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: "\u666E\u901A\u9632\u5FA1"
   cardImage: {fileID: 21300000, guid: db56b57fa88deb34e8a1b904bd86e96c, type: 3}
-  cost: 1
-  description: 
+  cost: 2
+  description: "\u83B7\u5F97\u5C11\u91CF\u62A4\u76FE"
   cardType: 1
   effects:
   - {fileID: 11400000, guid: a19e3950635cbcb4494811ca404205d2, type: 2}

@@ -1,5 +1,6 @@
 ﻿using System;
 using Character;
+using Character.Enemy;
 using Tools;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace Card_Effect
                     from.UpdateAtkBuffRound(value,true);
                     break;
                 case EffectTargetType.Target:
+                    to = EnemyManager.Instance.GetRandomEnemy();
                     to.UpdateAtkBuffRound(value,true);
                     break;
                 case EffectTargetType.All:

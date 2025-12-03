@@ -30,6 +30,7 @@ namespace Manager
         {
             currentLibrary.cardLibraries.Clear();
         }
+        
         private void InitCardList()
         {
             Addressables.LoadAssetsAsync<CardDataSO>("CardData", null).Completed += OnCardDataLoaded;

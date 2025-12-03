@@ -1,5 +1,6 @@
-﻿using Character;
-using Tools;
+﻿ using Character;
+ using Character.Enemy;
+ using Tools;
 using UnityEngine;
 
 namespace Card_Effect
@@ -15,6 +16,7 @@ namespace Card_Effect
             }
             else if (targetType == EffectTargetType.Target)
             {
+                to = EnemyManager.Instance.GetRandomEnemy();
                 to.HealHealth(value);
             }
         }
