@@ -36,7 +36,7 @@ namespace Card.Mono
                     drawDeck.Add(entry.cardData);
                 }
             }
-            //TODO:洗牌逻辑
+
             ShuffleDeck();
         }
 

@@ -1,3 +1,4 @@
+using System;
 using Card.ScripctsObject;
 using Character;
 using Events.ScripctsObject;
@@ -48,7 +49,7 @@ namespace Card.Mono
                 CardType.Attack => "攻击",
                 CardType.Defense => "技能",
                 CardType.Abilities => "能力",
-                _ => throw new System.NotImplementedException(),
+                _ => " "
             };
             player = GameObject.FindWithTag("Player").GetComponent<Player>();
         }

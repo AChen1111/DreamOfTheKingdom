@@ -44,7 +44,7 @@ namespace Rooms.Mono
                 RoomState.Locked => new Color(0.5f, 0.5f, 0.5f, 1f),
                 RoomState.Visited => new Color(0.5f, 0.8f, 0.5f, 0.5f),
                 RoomState.Attainable => Color.white,
-                _ => throw new System.NotImplementedException(),
+                _ => Color.black,
             };
         }
 
