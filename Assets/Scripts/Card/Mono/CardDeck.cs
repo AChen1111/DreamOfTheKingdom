@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Card.ScripctsObject;
 using DG.Tweening;
@@ -85,7 +86,7 @@ namespace Card.Mono
                 var cardTransform = cardLayoutManager.GetCardTransform(i, handCardObjectList.Count);
                 currentCard.UpdateCardState();
                 currentCard.isMoveing = true;
-                ///抽牌动画
+                //抽牌动画
                 currentCard.transform.DOScale(Vector3.one, 0.2f).SetDelay(delay).OnComplete(() =>
                 {
                     currentCard.transform.DOMove(cardTransform.pos, 0.5f).OnComplete(() =>
@@ -131,14 +132,21 @@ namespace Card.Mono
             SetCardLayOut(0f);
         }
 
+        
         /// <summary>
         /// 监听玩家回合开始事件
         /// </summary>
         public void PlayerTurnBegin()
         {
-            DrawCard(3);
+            StartCoroutine(OnPlayerTurnBegin());
         }
-    
+        private IEnumerator OnPlayerTurnBegin()
+        {
+            yield return new WaitForEndOfFrame();
+            DrawCard(5);
+        }
+        
+        
         /// <summary>
         /// 监听玩家回合结束事件
         /// </summary>

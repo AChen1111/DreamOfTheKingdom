@@ -8,6 +8,16 @@ namespace Card.ScripctsObject
     public class CardLibrarySO : ScriptableObject
     {
         public List<CardLibraryEntry> cardLibraries;
+
+        public void AddCard(CardLibraryEntry card)
+        {
+            cardLibraries.Add(card);
+        }
+
+        public void RemoveCard(CardLibraryEntry card)
+        {
+            cardLibraries.Remove(card);
+        }
     }
 
     [System.Serializable]

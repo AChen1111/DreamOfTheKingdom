@@ -20,6 +20,7 @@ namespace Manager
             Instance = this;
         }
         public CardLibrarySO allCardLibrarySo;
+        public CardLibrarySO playerCardLibrarySo;
         
         /// <summary>
         /// 获取随机
@@ -39,21 +40,26 @@ namespace Manager
         public List<CardLibraryEntry> getCards(int nums)
         {
             var cardList = new List<CardLibraryEntry>();
-            for (int i = 0; i < nums; i++)
+            int total = allCardLibrarySo.cardLibraries.Count;
+
+
+            if (cardSet.Count >= total)
+            {
+                cardSet.Clear();
+            }
+
+            int maxTry = 1000;
+            while (cardList.Count < nums && maxTry-- > 0)
             {
                 var card = getCard();
-                if (!cardSet.Contains(card))
+                if (cardSet.Add(card))
                 {
                     cardList.Add(card);
-                    cardSet.Add(card);
                 }
-                else
-                {
-                    i--;
-                }
-                
             }
             return cardList;
         }
+        
+
     }
 }
