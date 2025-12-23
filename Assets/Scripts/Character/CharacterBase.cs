@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -57,6 +58,7 @@ namespace Character
         }
         public virtual void TakeDamage(int damage)
         {
+            Debug.Log($"[TakeDamage] {name} damage={damage} hp={CurrentHP} def={defense.currentValue}\n{Environment.StackTrace}");
             if (isDead) return;
             
             //伤害够
@@ -105,6 +107,7 @@ namespace Character
         /// <param name="value"></param>
         public void HealHealth(int value)
         {
+            Debug.LogWarning($"[HealHealth] {name} value={value} hp={CurrentHP}\n{Environment.StackTrace}");
             CurrentHP += value;
             CurrentHP = Mathf.Min(CurrentHP,maxHp);
             StartCoroutine(doBuffAnimation());

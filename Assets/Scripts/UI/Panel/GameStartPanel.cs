@@ -1,4 +1,5 @@
 using System;
+using Card.ScripctsObject;
 using Character;
 using Events.ScripctsObject;
 using Manager;
@@ -17,6 +18,7 @@ namespace UI.Panel
         public MapLayoutSO map;
         public IntVariable PlayerHp;
         public Player player;
+        public CardManager cardManager;
         
         [Header("事件广播")]
         public ObjectEventSO loadMapEvent;
@@ -34,18 +36,15 @@ namespace UI.Panel
                 {
                     UIManager.Instance.OnMenuOver();
                     loadMapEvent.RaiseEvent(null,this);
+                    map.ResetMapSO();
+                    cardManager.loadCard();
+                    PlayerHp.currentValue = PlayerHp.maxValue;
+                    player.isDead = false;
                     Debug.Log("loaded");
                 }
                 );
             
             btnQuit.onClick.AddListener(Application.Quit);
-        }
-
-        private void OnEnable()
-        {
-            map.ResetMapSO();
-            PlayerHp.currentValue = PlayerHp.maxValue;
-            player.isDead = false;
         }
     }
 }

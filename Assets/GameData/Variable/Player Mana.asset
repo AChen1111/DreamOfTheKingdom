@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b72a97328eaae40b88d8427e427585, type: 3}
   m_Name: Player Mana
   m_EditorClassIdentifier: 
-  maxValue: 0
-  currentValue: 0
+  maxValue: 3
+  currentValue: 3
   ValueChangedEvent: {fileID: 11400000, guid: 6d540dde9c9ca0e419fe839f998e7adc, type: 2}
   description: 

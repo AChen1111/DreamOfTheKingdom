@@ -18,6 +18,10 @@ namespace Card.ScripctsObject
         {
             cardLibraries.Remove(card);
         }
+        public void ClearCards()
+        {
+            cardLibraries.Clear();
+        }
     }
 
     [System.Serializable]

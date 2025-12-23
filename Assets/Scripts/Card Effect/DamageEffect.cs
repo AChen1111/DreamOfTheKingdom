@@ -1,4 +1,5 @@
 using Character;
+using Character.Enemy;
 using Tools;
 using UnityEngine;
 
@@ -9,22 +10,32 @@ namespace Card_Effect
     {
         public override void Execute(CharacterBase from, CharacterBase to)
         {
-            if (to == null) return;
+            
             int atk = (int) (value * from.AtkBase);
             switch (targetType)
             {
                 case EffectTargetType.Self:
                     break;
                 case EffectTargetType.Target:
+                    if (to == null) return;
                     to.TakeDamage(atk);
                     break;
                 case EffectTargetType.All:
-                    var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                    foreach(var enemy in enemies)
+                {
+                    var enemies = EnemyManager.Instance.GetAllEnemies();
+
+                    var snapshot = enemies.ToArray(); // 需要 using System.Linq;
+
+                    foreach (var enemy in snapshot)
                     {
-                        enemy.GetComponent<CharacterBase>().TakeDamage(atk);
+                        if (enemy == null) continue;
+                        var cb = enemy.GetComponent<CharacterBase>();
+                        if (cb == null) continue;
+
+                        cb.TakeDamage(atk);
                     }
                     break;
+                }
             }
         }
     }

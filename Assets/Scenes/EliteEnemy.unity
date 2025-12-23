@@ -1255,7 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
-  maxHp: 50
+  maxHp: 200
   hp: {fileID: 11400000, guid: 81ae2cd745808944fadd389ed2add7bf, type: 2}
   defense: {fileID: 11400000, guid: 25cae03dd6c68af46ad5f12f30e8320e, type: 2}
   buffRound: {fileID: 11400000, guid: bc98efb84a1b13141b3103b6bef2f284, type: 2}

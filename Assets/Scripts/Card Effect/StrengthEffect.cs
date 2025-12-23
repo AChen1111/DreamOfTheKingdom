@@ -22,6 +22,7 @@ namespace Card_Effect
                     break;
                 case EffectTargetType.All:
                     var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    Debug.Log(enemies.Length);
                     foreach(var enemy in enemies)
                     {
                         enemy.GetComponent<CharacterBase>().UpdateAtkBuffRound(value,true);

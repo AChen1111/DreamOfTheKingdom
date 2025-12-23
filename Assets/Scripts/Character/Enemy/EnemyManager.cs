@@ -67,6 +67,7 @@ namespace Character.Enemy
             foreach (var enemy in  _enemies)
             {
                 enemy.doAction();
+                
                 //等待1s后执行 另一个敌人的action
                 yield return  new WaitForSeconds(1f);
             }
@@ -111,5 +112,11 @@ namespace Character.Enemy
             }
             return _enemies[index];
         }
+
+        public List<Enemy> GetAllEnemies()
+        {
+            return _enemies;
+        }
+        
     }
 }

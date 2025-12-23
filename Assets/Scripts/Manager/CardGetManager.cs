@@ -42,13 +42,17 @@ namespace Manager
             var cardList = new List<CardLibraryEntry>();
             int total = allCardLibrarySo.cardLibraries.Count;
 
-
-            if (cardSet.Count >= total)
+            if (total <= 0) return cardList;
+            
+            int remaining = total - cardSet.Count;
+            if (remaining < nums)
             {
                 cardSet.Clear();
             }
 
             int maxTry = 1000;
+
+            // 先尽量抽“不重复”的
             while (cardList.Count < nums && maxTry-- > 0)
             {
                 var card = getCard();
@@ -57,6 +61,13 @@ namespace Manager
                     cardList.Add(card);
                 }
             }
+            
+            maxTry = 1000;
+            while (cardList.Count < nums && maxTry-- > 0)
+            {
+                cardList.Add(getCard());
+            }
+
             return cardList;
         }
         

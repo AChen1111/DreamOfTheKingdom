@@ -78,6 +78,7 @@ namespace Character.Enemy
         /// </summary>
         public Effect getAction()
         {
+            RecalculateTotalWeight();
             if (actions == null || actions.Count == 0)
                 return null;
 
@@ -106,6 +107,7 @@ namespace Character.Enemy
             // 理论上不会走到这里，兜底返回最后一个有 Effect 的
             for (int i = actions.Count - 1; i >= 0; i--)
             {
+                Debug.LogWarning("warnning in EnemyActionSO");
                 if (actions[i] != null && actions[i].effect != null)
                     return actions[i].effect;
             }

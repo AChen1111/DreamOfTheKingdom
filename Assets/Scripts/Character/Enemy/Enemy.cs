@@ -45,6 +45,7 @@ namespace Character.Enemy
                 player = FindFirstObjectByType<Player>();
             }
             curAction = actions.getAction();
+            Debug.Log($"[Enemy] picked effect={curAction?.name} type={curAction?.GetType().FullName} value={curAction?.value} targetType={curAction?.targetType}");
         }
     
         /// <summary>
@@ -62,6 +63,7 @@ namespace Character.Enemy
                     attack();
                     break;
                 case EffectTargetType.All:
+                    skill();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -70,36 +72,37 @@ namespace Character.Enemy
 
         private void skill()
         {
-            StartCoroutine(ProcessDelayAction("skill"));
+            var effectSnapshot = curAction;
+            var targetSnapshot = (CharacterBase)this;
+            StartCoroutine(ProcessDelayAction("skill", effectSnapshot, targetSnapshot));
         }
 
         private void attack()
         {
-            StartCoroutine(ProcessDelayAction("attack"));
+            var effectSnapshot = curAction;
+            var targetSnapshot = (CharacterBase)player;
+            StartCoroutine(ProcessDelayAction("attack", effectSnapshot, targetSnapshot));
         }
-    
+
         /// <summary>
         /// 开启协程
         /// </summary>
         /// <param name="actionName"></param>
+        /// <param name="effectSnapshot"></param>
+        /// <param name="targetSnapshot"></param>
         /// <returns></returns>
-        IEnumerator ProcessDelayAction(string actionName)
+        IEnumerator ProcessDelayAction(string actionName, Effect effectSnapshot, CharacterBase targetSnapshot)
         {
             animator.SetTrigger(actionName);
+
             yield return new WaitUntil(
                 ()=> animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1.0f > 0.6f
                      && !animator.IsInTransition(0)
                      && animator.GetCurrentAnimatorStateInfo(0).IsName(actionName)
             );
-            if (actionName == "attack")
-            {
-                curAction.Execute(this,player);
-            }
-            else
-            {
-                curAction.Execute(this,this);
-            }
+            
+            if (effectSnapshot != null)
+                effectSnapshot.Execute(this, targetSnapshot);
         }
-    
     }
 }

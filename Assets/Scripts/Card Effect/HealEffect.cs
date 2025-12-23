@@ -10,6 +10,9 @@ namespace Card_Effect
     {
         public override void Execute(CharacterBase from, CharacterBase to)
         {
+            //Debug.Log($"[HealEffect] value={value}, targetType={targetType}, from={from.name}, to={to?.name}");
+            //Debug.Log($"before heal: hp={from.CurrentHP}, maxHp={from.MaxHp}, value={value}");
+
             if (targetType == EffectTargetType.Self)
             {
                 from.HealHealth(value);
@@ -18,6 +21,13 @@ namespace Card_Effect
             {
                 to = EnemyManager.Instance.GetRandomEnemy();
                 to.HealHealth(value);
+            }
+            else if (targetType == EffectTargetType.All)
+            {
+                foreach (var enemy in EnemyManager.Instance.GetAllEnemies())
+                {
+                    enemy.HealHealth(value);
+                }
             }
         }
     }

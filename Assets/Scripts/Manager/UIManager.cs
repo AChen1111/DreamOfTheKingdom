@@ -14,7 +14,8 @@ namespace Manager
         public GameObject player;
         public GameObject gameOverPanel;
         public GameObject gameWinPanel;
-        
+        public GameObject resetPanel;
+        public GameObject bossDeadPanel;
         public static UIManager Instance{get; private set;}
 
         private void Awake()
@@ -91,6 +92,16 @@ namespace Manager
         public void OnGameOver()
         {
             gameOverPanel.SetActive(true);
+        }
+
+        public void OnResetRoomEnter()
+        {
+            resetPanel.SetActive(true);
+        }
+
+        public void OnBossDead()
+        {
+            bossDeadPanel.SetActive(true);
         }
     }
 }

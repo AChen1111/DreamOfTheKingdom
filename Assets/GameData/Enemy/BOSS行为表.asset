@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccdf95180930483899c5c722db5e6f40, type: 3}
+  m_Name: "BOSS\u884C\u4E3A\u8868"
+  m_EditorClassIdentifier: 
+  actions:
+  - effect: {fileID: 11400000, guid: 65318973cde7feb4bba641c33f87496c, type: 2}
+    w: 4
+  - effect: {fileID: 11400000, guid: d6a6cca0ad5eafa47a9e8454b99a3630, type: 2}
+    w: 1
+  - effect: {fileID: 11400000, guid: e60a1c326cc383849819f9ed387f0f6c, type: 2}
+    w: 1
+  - effect: {fileID: 11400000, guid: 83228e352244bcd4fb9b3a33737890f3, type: 2}
+    w: 1

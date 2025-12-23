@@ -73,5 +73,11 @@ namespace Character
         {
             CurrentMana += value;
         }
+        
+        public void ResetStats()
+        {
+            CurrentHP = maxHp;
+            buffRound.SetValue(0);
+        }
     }
 }

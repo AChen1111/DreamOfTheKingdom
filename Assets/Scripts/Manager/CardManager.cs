@@ -20,10 +20,7 @@ namespace Manager
             InitCardList();
 
             //导入牌库
-            foreach (var item in newGameCardLibrary.cardLibraries)
-            {
-                currentLibrary.cardLibraries.Add(item);
-            }
+            loadCard();
         }
 
         void OnDisable()
@@ -66,6 +63,15 @@ namespace Manager
         public void DisCardObject(GameObject obj)
         {
             pool.ReturnObjectToPool(obj);
+        }
+
+        public void loadCard()
+        {
+            currentLibrary.ClearCards();
+            foreach (var item in newGameCardLibrary.cardLibraries)
+            {
+                currentLibrary.cardLibraries.Add(item);
+            }
         }
     }
 }
