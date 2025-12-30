@@ -3722,7 +3722,7 @@ MonoBehaviour:
   buff: {fileID: 844873671}
   deBuff: {fileID: 1013271808}
   playerMana: {fileID: 11400000, guid: a09ec9da4d6bd8b418144570880b95f8, type: 2}
-  maxMana: 10
+  maxMana: 3
   loseEvent: {fileID: 11400000, guid: 361e1090e02bd6c469d5ebc692b254d9, type: 2}
 --- !u!114 &899074360
 MonoBehaviour:
